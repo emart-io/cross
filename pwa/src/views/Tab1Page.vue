@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar style="--background: linear-gradient(to right,yellow,white);">
-        <ion-title>农村大集</ion-title>
+        <ion-title>暖心陪诊</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
