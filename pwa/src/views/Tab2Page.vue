@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-header>
-      <ion-toolbar>
+      <ion-toolbar style="--background: linear-gradient(to right,yellow,white);">
         <ion-title>菜地出租</ion-title>
       </ion-toolbar>
     </ion-header>
