@@ -19,7 +19,8 @@
             </ion-toolbar>
           </ion-header>
           <ExploreContainer name="Tab 1 page" /> -->
-          <ion-card>
+          <img alt="Silhouette of mountains" src="assets/0211.jpeg" />
+          <!-- <ion-card>
             <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
             <ion-card-header>
               <ion-card-title>Card Title</ion-card-title>
@@ -29,12 +30,15 @@
             <ion-card-content>
               Here's a small text description for the card content. Nothing more, nothing less.
             </ion-card-content>
-          </ion-card>
+          </ion-card> -->
         </swiper-slide>
         <swiper-slide>
-          <ion-title>暖心陪诊</ion-title>
+          <!-- <ion-title>暖心陪诊</ion-title> -->
+          <img alt="Silhouette of mountains" src="assets/bujk.jpeg" />
         </swiper-slide>
-        <swiper-slide>Slide 3</swiper-slide>
+        <swiper-slide>
+          <img alt="Silhouette of mountains" src="assets/pz-ser-banner.jpg" />
+        </swiper-slide>
       </swiper>
     </ion-content>
   </ion-page>
@@ -42,7 +46,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, IonTitle, IonContent, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, /*IonTitle,*/ IonContent, /*IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle*/ } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { location } from 'ionicons/icons';
 import AMapLoader from '@amap/amap-jsapi-loader';
@@ -59,7 +63,7 @@ export default defineComponent({
     console.log('Home page will enter');
     this.getLocation();
   },
-  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonButton, IonIcon, IonTitle, IonContent, IonPage, Swiper, SwiperSlide, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle },
+  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonButton, IonIcon, /*IonTitle,*/ IonContent, IonPage, Swiper, SwiperSlide, /*IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle*/ },
   data() {
     return {
       position: "湖北荆门",
