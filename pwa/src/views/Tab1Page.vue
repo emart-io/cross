@@ -43,24 +43,24 @@ export default defineComponent({
   },
   methods: {
     getLocation() {
-      //this.position = 'abc'
       AMapLoader.load({
-        key: '6c2164d8ce6753329152d90f1da108f0',
-        version: '2.0',
+        key: '60d396703bef1a6a93d2eca45a70e764',
+        version: '1.4.10',
         plugins: ['AMap.Geolocation'],
       }).then(AMap => {
         const geolocation = new AMap.Geolocation({
-          enableHighAccuracy: true, // 高精度开启
+          enableHighAccuracy: true,
           radius: 10000,
         })
 
         geolocation.getCurrentPosition((status: any, result: any) => {
           if (status == 'complete') {
-            console.log("111", result)//result.addressComponent.city
-            this.position = 'eeee';
+            console.log("111", result)
+            if (result.addressComponent) {
+              this.position = result.addressComponent.province;
+            }
           } else {
             console.log("222", result);
-            //utilsService.alert(JSON.stringify(result));
           }
         })
       }).catch((e) => {
