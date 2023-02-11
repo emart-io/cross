@@ -10,23 +10,48 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 1</ion-title>
-        </ion-toolbar>
-      </ion-header>
+      <swiper :modules="modules" :slides-per-view="1" :space-between="50" :autoplay="autoplay" @swiper="onSwiper"
+        @slideChange="onSlideChange">
+        <swiper-slide>
+          <!-- <ion-header collapse="condense">
+            <ion-toolbar>
+              <ion-title size="large">Tab 1</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <ExploreContainer name="Tab 1 page" /> -->
+          <ion-card>
+            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
 
-      <ExploreContainer name="Tab 1 page" />
+            <ion-card-content>
+              Here's a small text description for the card content. Nothing more, nothing less.
+            </ion-card-content>
+          </ion-card>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-title>暖心陪诊</ion-title>
+        </swiper-slide>
+        <swiper-slide>Slide 3</swiper-slide>
+      </swiper>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, IonTitle, IonContent, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/vue';
+//import ExploreContainer from '@/components/ExploreContainer.vue';
 import { location } from 'ionicons/icons';
 import AMapLoader from '@amap/amap-jsapi-loader';
+import { Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+import 'swiper/css';
+import 'swiper/css/autoplay';
+
 
 export default defineComponent({
   name: 'Tab1Page',
@@ -34,10 +59,11 @@ export default defineComponent({
     console.log('Home page will enter');
     this.getLocation();
   },
-  components: { ExploreContainer, IonHeader, IonToolbar, IonButton, IonIcon, IonTitle, IonContent, IonPage },
+  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonButton, IonIcon, IonTitle, IonContent, IonPage, Swiper, SwiperSlide, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle },
   data() {
     return {
       position: "湖北荆门",
+      autoplay: { delay: 3000 },
       emp: { name: 'Ram', age: 25 }
     }
   },
@@ -69,8 +95,17 @@ export default defineComponent({
     },
   },
   setup() {
+    const onSwiper = (swiper: any) => {
+      console.log(swiper);
+    };
+    const onSlideChange = () => {
+      console.log('slide change');
+    };
     return {
-      location
+      location,
+      onSwiper,
+      onSlideChange,
+      modules: [Autoplay],
     }
   }
 });
