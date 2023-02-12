@@ -20,17 +20,6 @@
           </ion-header>
           <ExploreContainer name="Tab 1 page" /> -->
           <img alt="Silhouette of mountains" src="assets/0211.jpeg" />
-          <!-- <ion-card>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-            <ion-card-header>
-              <ion-card-title>Card Title</ion-card-title>
-              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            </ion-card-header>
-
-            <ion-card-content>
-              Here's a small text description for the card content. Nothing more, nothing less.
-            </ion-card-content>
-          </ion-card> -->
         </swiper-slide>
         <swiper-slide>
           <!-- <ion-title>暖心陪诊</ion-title> -->
@@ -40,13 +29,43 @@
           <img alt="Silhouette of mountains" src="assets/pz-ser-banner.jpg" />
         </swiper-slide>
       </swiper>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <!-- <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /> -->
+              <ion-card-header>
+                <ion-card-title>就医陪诊</ion-card-title>
+                <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+              </ion-card-header>
+
+              <ion-card-content>
+                Here's a small text description
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-card>
+              <!-- <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /> -->
+              <ion-card-header>
+                <ion-card-title>取送结果</ion-card-title>
+                <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+              </ion-card-header>
+
+              <ion-card-content>
+                Here's a small text description
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, /*IonTitle,*/ IonContent, /*IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle*/ } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, /*IonTitle,*/ IonContent, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { location } from 'ionicons/icons';
 import AMapLoader from '@amap/amap-jsapi-loader';
@@ -63,7 +82,7 @@ export default defineComponent({
     console.log('Home page will enter');
     this.getLocation();
   },
-  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonButton, IonIcon, /*IonTitle,*/ IonContent, IonPage, Swiper, SwiperSlide, /*IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle*/ },
+  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonButton, IonIcon, /*IonTitle,*/ IonContent, IonPage, Swiper, SwiperSlide, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow },
   data() {
     return {
       position: "湖北荆门",
