@@ -137,7 +137,7 @@ export default defineComponent({
 <style>
 .swiper {
   width: 100%;
-  height: 30%;
+  height: 33%;
 }
 
 .swiper .swiper-slide {
