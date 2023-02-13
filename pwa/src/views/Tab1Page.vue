@@ -133,3 +133,22 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+.swiper {
+  width: 100%;
+  height: 30%;
+}
+
+.swiper .swiper-slide {
+  height: auto;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* border-radius: 15px; */
+}
+</style>
