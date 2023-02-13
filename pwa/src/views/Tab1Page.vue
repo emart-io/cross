@@ -11,7 +11,7 @@
     </ion-header>
     <ion-content :fullscreen="true">
       <swiper :modules="modules" :slides-per-view="1" :space-between="50" :autoplay="autoplay" @swiper="onSwiper"
-        @slideChange="onSlideChange">
+        @slideChange="onSlideChange" :pagination="{ clickable: true }">
         <swiper-slide>
           <!-- <ion-header collapse="condense">
             <ion-toolbar>
@@ -69,12 +69,12 @@ import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, /*IonTitle,*/ IonCo
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { location } from 'ionicons/icons';
 import AMapLoader from '@amap/amap-jsapi-loader';
-import { Autoplay } from 'swiper';
+import { Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
-
+import 'swiper/css/pagination';
 
 export default defineComponent({
   name: 'Tab1Page',
@@ -128,7 +128,7 @@ export default defineComponent({
       location,
       onSwiper,
       onSlideChange,
-      modules: [Autoplay],
+      modules: [Autoplay, Pagination],
     }
   }
 });
