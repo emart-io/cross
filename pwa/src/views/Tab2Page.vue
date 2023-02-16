@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar style="--background: linear-gradient(to right,yellow,white);">
-        <ion-title>暖心陪诊</ion-title>
+        <ion-title>e+陪诊</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -11,8 +11,10 @@
           <ion-title size="large">Tab 2</ion-title>
         </ion-toolbar>
       </ion-header>
+      <br/>
+      <input v-model="attendant.name" /><br/>
+      <br/>
       {{ attendant.name }}
-      <input v-model="attendant.name" />
       <ExploreContainer name="Tab 2 page " />
     </ion-content>
 </ion-page>
