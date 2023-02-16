@@ -1,60 +1,60 @@
 import * as grpcWeb from 'grpc-web';
 
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
-import * as user_pb from './user_pb';
+import * as attendant_pb from './attendant_pb';
 
 
-export class UsersClient {
+export class AttendantsClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
   add(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.User) => void
-  ): grpcWeb.ClientReadableStream<user_pb.User>;
+               response: attendant_pb.Attendant) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Attendant>;
 
   get(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.User) => void
-  ): grpcWeb.ClientReadableStream<user_pb.User>;
+               response: attendant_pb.Attendant) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Attendant>;
 
   update(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.User) => void
-  ): grpcWeb.ClientReadableStream<user_pb.User>;
+               response: attendant_pb.Attendant) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Attendant>;
 
   list(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<user_pb.User>;
+  ): grpcWeb.ClientReadableStream<attendant_pb.Attendant>;
 
   delete(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void
   ): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   login(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.User) => void
-  ): grpcWeb.ClientReadableStream<user_pb.User>;
+               response: attendant_pb.Attendant) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Attendant>;
 
   certificate(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.User) => void
-  ): grpcWeb.ClientReadableStream<user_pb.User>;
+               response: attendant_pb.Attendant) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Attendant>;
 
 }
 
@@ -64,37 +64,37 @@ export class AddressesClient {
                options?: null | { [index: string]: any; });
 
   add(
-    request: user_pb.Address,
+    request: attendant_pb.Address,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.Address) => void
-  ): grpcWeb.ClientReadableStream<user_pb.Address>;
+               response: attendant_pb.Address) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Address>;
 
   get(
-    request: user_pb.Address,
+    request: attendant_pb.Address,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.Address) => void
-  ): grpcWeb.ClientReadableStream<user_pb.Address>;
+               response: attendant_pb.Address) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Address>;
 
   update(
-    request: user_pb.Address,
+    request: attendant_pb.Address,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.Address) => void
-  ): grpcWeb.ClientReadableStream<user_pb.Address>;
+               response: attendant_pb.Address) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Address>;
 
   delete(
-    request: user_pb.Address,
+    request: attendant_pb.Address,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void
   ): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   list(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<user_pb.Address>;
+  ): grpcWeb.ClientReadableStream<attendant_pb.Address>;
 
 }
 
@@ -104,79 +104,79 @@ export class MemosClient {
                options?: null | { [index: string]: any; });
 
   add(
-    request: user_pb.Memo,
+    request: attendant_pb.Memo,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.Memo) => void
-  ): grpcWeb.ClientReadableStream<user_pb.Memo>;
+               response: attendant_pb.Memo) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Memo>;
 
   get(
-    request: user_pb.Memo,
+    request: attendant_pb.Memo,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.Memo) => void
-  ): grpcWeb.ClientReadableStream<user_pb.Memo>;
+               response: attendant_pb.Memo) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Memo>;
 
   update(
-    request: user_pb.Memo,
+    request: attendant_pb.Memo,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
-               response: user_pb.Memo) => void
-  ): grpcWeb.ClientReadableStream<user_pb.Memo>;
+               response: attendant_pb.Memo) => void
+  ): grpcWeb.ClientReadableStream<attendant_pb.Memo>;
 
   delete(
-    request: user_pb.Memo,
+    request: attendant_pb.Memo,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void
   ): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
 
   list(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<user_pb.Memo>;
+  ): grpcWeb.ClientReadableStream<attendant_pb.Memo>;
 
 }
 
-export class UsersPromiseClient {
+export class AttendantsPromiseClient {
   constructor (hostname: string,
                credentials?: null | { [index: string]: string; },
                options?: null | { [index: string]: any; });
 
   add(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.User>;
+  ): Promise<attendant_pb.Attendant>;
 
   get(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.User>;
+  ): Promise<attendant_pb.Attendant>;
 
   update(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.User>;
+  ): Promise<attendant_pb.Attendant>;
 
   list(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<user_pb.User>;
+  ): grpcWeb.ClientReadableStream<attendant_pb.Attendant>;
 
   delete(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
   ): Promise<google_protobuf_empty_pb.Empty>;
 
   login(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.User>;
+  ): Promise<attendant_pb.Attendant>;
 
   certificate(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.User>;
+  ): Promise<attendant_pb.Attendant>;
 
 }
 
@@ -186,29 +186,29 @@ export class AddressesPromiseClient {
                options?: null | { [index: string]: any; });
 
   add(
-    request: user_pb.Address,
+    request: attendant_pb.Address,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.Address>;
+  ): Promise<attendant_pb.Address>;
 
   get(
-    request: user_pb.Address,
+    request: attendant_pb.Address,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.Address>;
+  ): Promise<attendant_pb.Address>;
 
   update(
-    request: user_pb.Address,
+    request: attendant_pb.Address,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.Address>;
+  ): Promise<attendant_pb.Address>;
 
   delete(
-    request: user_pb.Address,
+    request: attendant_pb.Address,
     metadata?: grpcWeb.Metadata
   ): Promise<google_protobuf_empty_pb.Empty>;
 
   list(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<user_pb.Address>;
+  ): grpcWeb.ClientReadableStream<attendant_pb.Address>;
 
 }
 
@@ -218,29 +218,29 @@ export class MemosPromiseClient {
                options?: null | { [index: string]: any; });
 
   add(
-    request: user_pb.Memo,
+    request: attendant_pb.Memo,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.Memo>;
+  ): Promise<attendant_pb.Memo>;
 
   get(
-    request: user_pb.Memo,
+    request: attendant_pb.Memo,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.Memo>;
+  ): Promise<attendant_pb.Memo>;
 
   update(
-    request: user_pb.Memo,
+    request: attendant_pb.Memo,
     metadata?: grpcWeb.Metadata
-  ): Promise<user_pb.Memo>;
+  ): Promise<attendant_pb.Memo>;
 
   delete(
-    request: user_pb.Memo,
+    request: attendant_pb.Memo,
     metadata?: grpcWeb.Metadata
   ): Promise<google_protobuf_empty_pb.Empty>;
 
   list(
-    request: user_pb.User,
+    request: attendant_pb.Attendant,
     metadata?: grpcWeb.Metadata
-  ): grpcWeb.ClientReadableStream<user_pb.Memo>;
+  ): grpcWeb.ClientReadableStream<attendant_pb.Memo>;
 
 }
 
