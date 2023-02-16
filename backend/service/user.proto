@@ -1,82 +1,82 @@
-syntax = "proto3";
+ syntax = "proto3";
 
-package zbay;
+// package zbay;
 
-import "google/protobuf/empty.proto";
-import "google/protobuf/timestamp.proto";
+// import "google/protobuf/empty.proto";
+// import "google/protobuf/timestamp.proto";
 
-option go_package="service/go;zbay";
+ option go_package="service/go;zbay";
 
-service Users {
-  rpc Add (User) returns (User) {}
-  rpc Get (User) returns (User) {}
-  rpc Update (User) returns (User) {}
-  rpc List (User) returns (stream User) {}
-  rpc Delete (User) returns (google.protobuf.Empty) {}
-  rpc Login (User) returns (User) {}
-  rpc Certificate (User) returns (User) {}
-}
+// service Users {
+//   rpc Add (User) returns (User) {}
+//   rpc Get (User) returns (User) {}
+//   rpc Update (User) returns (User) {}
+//   rpc List (User) returns (stream User) {}
+//   rpc Delete (User) returns (google.protobuf.Empty) {}
+//   rpc Login (User) returns (User) {}
+//   rpc Certificate (User) returns (User) {}
+// }
 
-service Addresses {
-  rpc Add(Address) returns (Address) {}
-  rpc Get(Address) returns (Address) {}
-  rpc Update(Address) returns (Address) {}
-  rpc Delete(Address) returns (google.protobuf.Empty) {}
-  rpc List(User) returns (stream Address) {}
-}
+// service Addresses {
+//   rpc Add(Address) returns (Address) {}
+//   rpc Get(Address) returns (Address) {}
+//   rpc Update(Address) returns (Address) {}
+//   rpc Delete(Address) returns (google.protobuf.Empty) {}
+//   rpc List(User) returns (stream Address) {}
+// }
 
-//随手记
-service Memos {
-  rpc Add(Memo) returns (Memo) {}
-  rpc Get(Memo) returns (Memo) {}
-  rpc Update(Memo) returns (Memo) {}
-  rpc Delete(Memo) returns (google.protobuf.Empty) {}
-  rpc List(User) returns (stream Memo) {}
-}
+// //随手记
+// service Memos {
+//   rpc Add(Memo) returns (Memo) {}
+//   rpc Get(Memo) returns (Memo) {}
+//   rpc Update(Memo) returns (Memo) {}
+//   rpc Delete(Memo) returns (google.protobuf.Empty) {}
+//   rpc List(User) returns (stream Memo) {}
+// }
 
-message User {
-  string id = 1;
-  string name = 2;
-  string password = 3;
-  string telephone = 4;
-  string icon = 5;
-  string signature = 6;
-  Certification cert = 9;
-  repeated Shop shops = 10;
-  map<string,string> annotations = 7;
-  google.protobuf.Timestamp created = 8;  
-}
+// message User {
+//   string id = 1;
+//   string name = 2;
+//   string password = 3;
+//   string telephone = 4;
+//   string icon = 5;
+//   string signature = 6;
+//   Certification cert = 9;
+//   repeated Shop shops = 10;
+//   map<string,string> annotations = 7;
+//   google.protobuf.Timestamp created = 8;  
+// }
 
-message Certification {
-  string fullName = 1;
-  string idCardNo = 2;
-  repeated string images = 3;
-}
+// message Certification {
+//   string fullName = 1;
+//   string idCardNo = 2;
+//   repeated string images = 3;
+// }
 
-message Address {
-  string id = 1;
-  string userId = 2;
-  string contact = 3;
-  string telephone = 4;
-  string location = 5;
-  bool default = 8;
-  map<string,string> annotations = 6;  
-  google.protobuf.Timestamp created = 7;  
-}
+// message Address {
+//   string id = 1;
+//   string userId = 2;
+//   string contact = 3;
+//   string telephone = 4;
+//   string location = 5;
+//   bool default = 8;
+//   map<string,string> annotations = 6;  
+//   google.protobuf.Timestamp created = 7;  
+// }
 
-message Shop {
-  string id = 1;
-  string name = 2;
-  string description = 3;
-}
+// message Shop {
+//   string id = 1;
+//   string name = 2;
+//   string description = 3;
+// }
 
-message Memo {
-  string id = 1;
-  string userId = 2;
-  string title = 3;
-  string content = 4;
-  string location = 8;
-  map<string,string> annotations = 5;  
-  google.protobuf.Timestamp created = 6;
-  google.protobuf.Timestamp updated = 7;
-}
+// message Memo {
+//   string id = 1;
+//   string userId = 2;
+//   string title = 3;
+//   string content = 4;
+//   string location = 8;
+//   map<string,string> annotations = 5;  
+//   google.protobuf.Timestamp created = 6;
+//   google.protobuf.Timestamp updated = 7;
+// }

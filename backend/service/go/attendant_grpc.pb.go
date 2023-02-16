@@ -15,60 +15,60 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// UsersClient is the client API for Users service.
+// AttendantsClient is the client API for Attendants service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type UsersClient interface {
-	Add(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
-	Get(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
-	Update(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
-	List(ctx context.Context, in *User, opts ...grpc.CallOption) (Users_ListClient, error)
-	Delete(ctx context.Context, in *User, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	Login(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
-	Certificate(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
+type AttendantsClient interface {
+	Add(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*Attendant, error)
+	Get(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*Attendant, error)
+	Update(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*Attendant, error)
+	List(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (Attendants_ListClient, error)
+	Delete(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	Login(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*Attendant, error)
+	Certificate(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*Attendant, error)
 }
 
-type usersClient struct {
+type attendantsClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewUsersClient(cc grpc.ClientConnInterface) UsersClient {
-	return &usersClient{cc}
+func NewAttendantsClient(cc grpc.ClientConnInterface) AttendantsClient {
+	return &attendantsClient{cc}
 }
 
-func (c *usersClient) Add(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error) {
-	out := new(User)
-	err := c.cc.Invoke(ctx, "/zbay.Users/Add", in, out, opts...)
+func (c *attendantsClient) Add(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*Attendant, error) {
+	out := new(Attendant)
+	err := c.cc.Invoke(ctx, "/zbay.Attendants/Add", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *usersClient) Get(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error) {
-	out := new(User)
-	err := c.cc.Invoke(ctx, "/zbay.Users/Get", in, out, opts...)
+func (c *attendantsClient) Get(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*Attendant, error) {
+	out := new(Attendant)
+	err := c.cc.Invoke(ctx, "/zbay.Attendants/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *usersClient) Update(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error) {
-	out := new(User)
-	err := c.cc.Invoke(ctx, "/zbay.Users/Update", in, out, opts...)
+func (c *attendantsClient) Update(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*Attendant, error) {
+	out := new(Attendant)
+	err := c.cc.Invoke(ctx, "/zbay.Attendants/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *usersClient) List(ctx context.Context, in *User, opts ...grpc.CallOption) (Users_ListClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Users_ServiceDesc.Streams[0], "/zbay.Users/List", opts...)
+func (c *attendantsClient) List(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (Attendants_ListClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Attendants_ServiceDesc.Streams[0], "/zbay.Attendants/List", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &usersListClient{stream}
+	x := &attendantsListClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -78,271 +78,271 @@ func (c *usersClient) List(ctx context.Context, in *User, opts ...grpc.CallOptio
 	return x, nil
 }
 
-type Users_ListClient interface {
-	Recv() (*User, error)
+type Attendants_ListClient interface {
+	Recv() (*Attendant, error)
 	grpc.ClientStream
 }
 
-type usersListClient struct {
+type attendantsListClient struct {
 	grpc.ClientStream
 }
 
-func (x *usersListClient) Recv() (*User, error) {
-	m := new(User)
+func (x *attendantsListClient) Recv() (*Attendant, error) {
+	m := new(Attendant)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
 	return m, nil
 }
 
-func (c *usersClient) Delete(ctx context.Context, in *User, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *attendantsClient) Delete(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/zbay.Users/Delete", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/zbay.Attendants/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *usersClient) Login(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error) {
-	out := new(User)
-	err := c.cc.Invoke(ctx, "/zbay.Users/Login", in, out, opts...)
+func (c *attendantsClient) Login(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*Attendant, error) {
+	out := new(Attendant)
+	err := c.cc.Invoke(ctx, "/zbay.Attendants/Login", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *usersClient) Certificate(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error) {
-	out := new(User)
-	err := c.cc.Invoke(ctx, "/zbay.Users/Certificate", in, out, opts...)
+func (c *attendantsClient) Certificate(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (*Attendant, error) {
+	out := new(Attendant)
+	err := c.cc.Invoke(ctx, "/zbay.Attendants/Certificate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// UsersServer is the server API for Users service.
-// All implementations must embed UnimplementedUsersServer
+// AttendantsServer is the server API for Attendants service.
+// All implementations must embed UnimplementedAttendantsServer
 // for forward compatibility
-type UsersServer interface {
-	Add(context.Context, *User) (*User, error)
-	Get(context.Context, *User) (*User, error)
-	Update(context.Context, *User) (*User, error)
-	List(*User, Users_ListServer) error
-	Delete(context.Context, *User) (*emptypb.Empty, error)
-	Login(context.Context, *User) (*User, error)
-	Certificate(context.Context, *User) (*User, error)
-	mustEmbedUnimplementedUsersServer()
+type AttendantsServer interface {
+	Add(context.Context, *Attendant) (*Attendant, error)
+	Get(context.Context, *Attendant) (*Attendant, error)
+	Update(context.Context, *Attendant) (*Attendant, error)
+	List(*Attendant, Attendants_ListServer) error
+	Delete(context.Context, *Attendant) (*emptypb.Empty, error)
+	Login(context.Context, *Attendant) (*Attendant, error)
+	Certificate(context.Context, *Attendant) (*Attendant, error)
+	mustEmbedUnimplementedAttendantsServer()
 }
 
-// UnimplementedUsersServer must be embedded to have forward compatible implementations.
-type UnimplementedUsersServer struct {
+// UnimplementedAttendantsServer must be embedded to have forward compatible implementations.
+type UnimplementedAttendantsServer struct {
 }
 
-func (UnimplementedUsersServer) Add(context.Context, *User) (*User, error) {
+func (UnimplementedAttendantsServer) Add(context.Context, *Attendant) (*Attendant, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Add not implemented")
 }
-func (UnimplementedUsersServer) Get(context.Context, *User) (*User, error) {
+func (UnimplementedAttendantsServer) Get(context.Context, *Attendant) (*Attendant, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (UnimplementedUsersServer) Update(context.Context, *User) (*User, error) {
+func (UnimplementedAttendantsServer) Update(context.Context, *Attendant) (*Attendant, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (UnimplementedUsersServer) List(*User, Users_ListServer) error {
+func (UnimplementedAttendantsServer) List(*Attendant, Attendants_ListServer) error {
 	return status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (UnimplementedUsersServer) Delete(context.Context, *User) (*emptypb.Empty, error) {
+func (UnimplementedAttendantsServer) Delete(context.Context, *Attendant) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedUsersServer) Login(context.Context, *User) (*User, error) {
+func (UnimplementedAttendantsServer) Login(context.Context, *Attendant) (*Attendant, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedUsersServer) Certificate(context.Context, *User) (*User, error) {
+func (UnimplementedAttendantsServer) Certificate(context.Context, *Attendant) (*Attendant, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Certificate not implemented")
 }
-func (UnimplementedUsersServer) mustEmbedUnimplementedUsersServer() {}
+func (UnimplementedAttendantsServer) mustEmbedUnimplementedAttendantsServer() {}
 
-// UnsafeUsersServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to UsersServer will
+// UnsafeAttendantsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AttendantsServer will
 // result in compilation errors.
-type UnsafeUsersServer interface {
-	mustEmbedUnimplementedUsersServer()
+type UnsafeAttendantsServer interface {
+	mustEmbedUnimplementedAttendantsServer()
 }
 
-func RegisterUsersServer(s grpc.ServiceRegistrar, srv UsersServer) {
-	s.RegisterService(&Users_ServiceDesc, srv)
+func RegisterAttendantsServer(s grpc.ServiceRegistrar, srv AttendantsServer) {
+	s.RegisterService(&Attendants_ServiceDesc, srv)
 }
 
-func _Users_Add_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(User)
+func _Attendants_Add_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Attendant)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsersServer).Add(ctx, in)
+		return srv.(AttendantsServer).Add(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zbay.Users/Add",
+		FullMethod: "/zbay.Attendants/Add",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServer).Add(ctx, req.(*User))
+		return srv.(AttendantsServer).Add(ctx, req.(*Attendant))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Users_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(User)
+func _Attendants_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Attendant)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsersServer).Get(ctx, in)
+		return srv.(AttendantsServer).Get(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zbay.Users/Get",
+		FullMethod: "/zbay.Attendants/Get",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServer).Get(ctx, req.(*User))
+		return srv.(AttendantsServer).Get(ctx, req.(*Attendant))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Users_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(User)
+func _Attendants_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Attendant)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsersServer).Update(ctx, in)
+		return srv.(AttendantsServer).Update(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zbay.Users/Update",
+		FullMethod: "/zbay.Attendants/Update",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServer).Update(ctx, req.(*User))
+		return srv.(AttendantsServer).Update(ctx, req.(*Attendant))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Users_List_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(User)
+func _Attendants_List_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Attendant)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(UsersServer).List(m, &usersListServer{stream})
+	return srv.(AttendantsServer).List(m, &attendantsListServer{stream})
 }
 
-type Users_ListServer interface {
-	Send(*User) error
+type Attendants_ListServer interface {
+	Send(*Attendant) error
 	grpc.ServerStream
 }
 
-type usersListServer struct {
+type attendantsListServer struct {
 	grpc.ServerStream
 }
 
-func (x *usersListServer) Send(m *User) error {
+func (x *attendantsListServer) Send(m *Attendant) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _Users_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(User)
+func _Attendants_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Attendant)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsersServer).Delete(ctx, in)
+		return srv.(AttendantsServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zbay.Users/Delete",
+		FullMethod: "/zbay.Attendants/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServer).Delete(ctx, req.(*User))
+		return srv.(AttendantsServer).Delete(ctx, req.(*Attendant))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Users_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(User)
+func _Attendants_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Attendant)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsersServer).Login(ctx, in)
+		return srv.(AttendantsServer).Login(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zbay.Users/Login",
+		FullMethod: "/zbay.Attendants/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServer).Login(ctx, req.(*User))
+		return srv.(AttendantsServer).Login(ctx, req.(*Attendant))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Users_Certificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(User)
+func _Attendants_Certificate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Attendant)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UsersServer).Certificate(ctx, in)
+		return srv.(AttendantsServer).Certificate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zbay.Users/Certificate",
+		FullMethod: "/zbay.Attendants/Certificate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UsersServer).Certificate(ctx, req.(*User))
+		return srv.(AttendantsServer).Certificate(ctx, req.(*Attendant))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Users_ServiceDesc is the grpc.ServiceDesc for Users service.
+// Attendants_ServiceDesc is the grpc.ServiceDesc for Attendants service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Users_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "zbay.Users",
-	HandlerType: (*UsersServer)(nil),
+var Attendants_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "zbay.Attendants",
+	HandlerType: (*AttendantsServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Add",
-			Handler:    _Users_Add_Handler,
+			Handler:    _Attendants_Add_Handler,
 		},
 		{
 			MethodName: "Get",
-			Handler:    _Users_Get_Handler,
+			Handler:    _Attendants_Get_Handler,
 		},
 		{
 			MethodName: "Update",
-			Handler:    _Users_Update_Handler,
+			Handler:    _Attendants_Update_Handler,
 		},
 		{
 			MethodName: "Delete",
-			Handler:    _Users_Delete_Handler,
+			Handler:    _Attendants_Delete_Handler,
 		},
 		{
 			MethodName: "Login",
-			Handler:    _Users_Login_Handler,
+			Handler:    _Attendants_Login_Handler,
 		},
 		{
 			MethodName: "Certificate",
-			Handler:    _Users_Certificate_Handler,
+			Handler:    _Attendants_Certificate_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "List",
-			Handler:       _Users_List_Handler,
+			Handler:       _Attendants_List_Handler,
 			ServerStreams: true,
 		},
 	},
-	Metadata: "user.proto",
+	Metadata: "attendant.proto",
 }
 
 // AddressesClient is the client API for Addresses service.
@@ -353,7 +353,7 @@ type AddressesClient interface {
 	Get(ctx context.Context, in *Address, opts ...grpc.CallOption) (*Address, error)
 	Update(ctx context.Context, in *Address, opts ...grpc.CallOption) (*Address, error)
 	Delete(ctx context.Context, in *Address, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	List(ctx context.Context, in *User, opts ...grpc.CallOption) (Addresses_ListClient, error)
+	List(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (Addresses_ListClient, error)
 }
 
 type addressesClient struct {
@@ -400,7 +400,7 @@ func (c *addressesClient) Delete(ctx context.Context, in *Address, opts ...grpc.
 	return out, nil
 }
 
-func (c *addressesClient) List(ctx context.Context, in *User, opts ...grpc.CallOption) (Addresses_ListClient, error) {
+func (c *addressesClient) List(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (Addresses_ListClient, error) {
 	stream, err := c.cc.NewStream(ctx, &Addresses_ServiceDesc.Streams[0], "/zbay.Addresses/List", opts...)
 	if err != nil {
 		return nil, err
@@ -440,7 +440,7 @@ type AddressesServer interface {
 	Get(context.Context, *Address) (*Address, error)
 	Update(context.Context, *Address) (*Address, error)
 	Delete(context.Context, *Address) (*emptypb.Empty, error)
-	List(*User, Addresses_ListServer) error
+	List(*Attendant, Addresses_ListServer) error
 	mustEmbedUnimplementedAddressesServer()
 }
 
@@ -460,7 +460,7 @@ func (UnimplementedAddressesServer) Update(context.Context, *Address) (*Address,
 func (UnimplementedAddressesServer) Delete(context.Context, *Address) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedAddressesServer) List(*User, Addresses_ListServer) error {
+func (UnimplementedAddressesServer) List(*Attendant, Addresses_ListServer) error {
 	return status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 func (UnimplementedAddressesServer) mustEmbedUnimplementedAddressesServer() {}
@@ -549,7 +549,7 @@ func _Addresses_Delete_Handler(srv interface{}, ctx context.Context, dec func(in
 }
 
 func _Addresses_List_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(User)
+	m := new(Attendant)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
@@ -600,7 +600,7 @@ var Addresses_ServiceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 	},
-	Metadata: "user.proto",
+	Metadata: "attendant.proto",
 }
 
 // MemosClient is the client API for Memos service.
@@ -611,7 +611,7 @@ type MemosClient interface {
 	Get(ctx context.Context, in *Memo, opts ...grpc.CallOption) (*Memo, error)
 	Update(ctx context.Context, in *Memo, opts ...grpc.CallOption) (*Memo, error)
 	Delete(ctx context.Context, in *Memo, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	List(ctx context.Context, in *User, opts ...grpc.CallOption) (Memos_ListClient, error)
+	List(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (Memos_ListClient, error)
 }
 
 type memosClient struct {
@@ -658,7 +658,7 @@ func (c *memosClient) Delete(ctx context.Context, in *Memo, opts ...grpc.CallOpt
 	return out, nil
 }
 
-func (c *memosClient) List(ctx context.Context, in *User, opts ...grpc.CallOption) (Memos_ListClient, error) {
+func (c *memosClient) List(ctx context.Context, in *Attendant, opts ...grpc.CallOption) (Memos_ListClient, error) {
 	stream, err := c.cc.NewStream(ctx, &Memos_ServiceDesc.Streams[0], "/zbay.Memos/List", opts...)
 	if err != nil {
 		return nil, err
@@ -698,7 +698,7 @@ type MemosServer interface {
 	Get(context.Context, *Memo) (*Memo, error)
 	Update(context.Context, *Memo) (*Memo, error)
 	Delete(context.Context, *Memo) (*emptypb.Empty, error)
-	List(*User, Memos_ListServer) error
+	List(*Attendant, Memos_ListServer) error
 	mustEmbedUnimplementedMemosServer()
 }
 
@@ -718,7 +718,7 @@ func (UnimplementedMemosServer) Update(context.Context, *Memo) (*Memo, error) {
 func (UnimplementedMemosServer) Delete(context.Context, *Memo) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedMemosServer) List(*User, Memos_ListServer) error {
+func (UnimplementedMemosServer) List(*Attendant, Memos_ListServer) error {
 	return status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 func (UnimplementedMemosServer) mustEmbedUnimplementedMemosServer() {}
@@ -807,7 +807,7 @@ func _Memos_Delete_Handler(srv interface{}, ctx context.Context, dec func(interf
 }
 
 func _Memos_List_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(User)
+	m := new(Attendant)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
@@ -858,5 +858,5 @@ var Memos_ServiceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 	},
-	Metadata: "user.proto",
+	Metadata: "attendant.proto",
 }

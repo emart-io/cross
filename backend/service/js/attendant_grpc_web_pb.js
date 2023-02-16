@@ -8,7 +8,7 @@
 // versions:
 // 	protoc-gen-grpc-web v1.4.2
 // 	protoc              v3.14.0
-// source: user.proto
+// source: attendant.proto
 
 
 /* eslint-disable */
@@ -24,7 +24,7 @@ var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb
 
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js')
 const proto = {};
-proto.zbay = require('./user_pb.js');
+proto.zbay = require('./attendant_pb.js');
 
 /**
  * @param {string} hostname
@@ -34,7 +34,7 @@ proto.zbay = require('./user_pb.js');
  * @struct
  * @final
  */
-proto.zbay.UsersClient =
+proto.zbay.AttendantsClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'binary';
@@ -60,7 +60,7 @@ proto.zbay.UsersClient =
  * @struct
  * @final
  */
-proto.zbay.UsersPromiseClient =
+proto.zbay.AttendantsPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'binary';
@@ -81,255 +81,255 @@ proto.zbay.UsersPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zbay.User,
- *   !proto.zbay.User>}
+ *   !proto.zbay.Attendant,
+ *   !proto.zbay.Attendant>}
  */
-const methodDescriptor_Users_Add = new grpc.web.MethodDescriptor(
-  '/zbay.Users/Add',
+const methodDescriptor_Attendants_Add = new grpc.web.MethodDescriptor(
+  '/zbay.Attendants/Add',
   grpc.web.MethodType.UNARY,
-  proto.zbay.User,
-  proto.zbay.User,
+  proto.zbay.Attendant,
+  proto.zbay.Attendant,
   /**
-   * @param {!proto.zbay.User} request
+   * @param {!proto.zbay.Attendant} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.zbay.User.deserializeBinary
+  proto.zbay.Attendant.deserializeBinary
 );
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.zbay.User)}
+ * @param {function(?grpc.web.RpcError, ?proto.zbay.Attendant)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.zbay.User>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.zbay.Attendant>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.zbay.UsersClient.prototype.add =
+proto.zbay.AttendantsClient.prototype.add =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/zbay.Users/Add',
+      '/zbay.Attendants/Add',
       request,
       metadata || {},
-      methodDescriptor_Users_Add,
+      methodDescriptor_Attendants_Add,
       callback);
 };
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.zbay.User>}
+ * @return {!Promise<!proto.zbay.Attendant>}
  *     Promise that resolves to the response
  */
-proto.zbay.UsersPromiseClient.prototype.add =
+proto.zbay.AttendantsPromiseClient.prototype.add =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/zbay.Users/Add',
+      '/zbay.Attendants/Add',
       request,
       metadata || {},
-      methodDescriptor_Users_Add);
+      methodDescriptor_Attendants_Add);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zbay.User,
- *   !proto.zbay.User>}
+ *   !proto.zbay.Attendant,
+ *   !proto.zbay.Attendant>}
  */
-const methodDescriptor_Users_Get = new grpc.web.MethodDescriptor(
-  '/zbay.Users/Get',
+const methodDescriptor_Attendants_Get = new grpc.web.MethodDescriptor(
+  '/zbay.Attendants/Get',
   grpc.web.MethodType.UNARY,
-  proto.zbay.User,
-  proto.zbay.User,
+  proto.zbay.Attendant,
+  proto.zbay.Attendant,
   /**
-   * @param {!proto.zbay.User} request
+   * @param {!proto.zbay.Attendant} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.zbay.User.deserializeBinary
+  proto.zbay.Attendant.deserializeBinary
 );
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.zbay.User)}
+ * @param {function(?grpc.web.RpcError, ?proto.zbay.Attendant)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.zbay.User>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.zbay.Attendant>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.zbay.UsersClient.prototype.get =
+proto.zbay.AttendantsClient.prototype.get =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/zbay.Users/Get',
+      '/zbay.Attendants/Get',
       request,
       metadata || {},
-      methodDescriptor_Users_Get,
+      methodDescriptor_Attendants_Get,
       callback);
 };
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.zbay.User>}
+ * @return {!Promise<!proto.zbay.Attendant>}
  *     Promise that resolves to the response
  */
-proto.zbay.UsersPromiseClient.prototype.get =
+proto.zbay.AttendantsPromiseClient.prototype.get =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/zbay.Users/Get',
+      '/zbay.Attendants/Get',
       request,
       metadata || {},
-      methodDescriptor_Users_Get);
+      methodDescriptor_Attendants_Get);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zbay.User,
- *   !proto.zbay.User>}
+ *   !proto.zbay.Attendant,
+ *   !proto.zbay.Attendant>}
  */
-const methodDescriptor_Users_Update = new grpc.web.MethodDescriptor(
-  '/zbay.Users/Update',
+const methodDescriptor_Attendants_Update = new grpc.web.MethodDescriptor(
+  '/zbay.Attendants/Update',
   grpc.web.MethodType.UNARY,
-  proto.zbay.User,
-  proto.zbay.User,
+  proto.zbay.Attendant,
+  proto.zbay.Attendant,
   /**
-   * @param {!proto.zbay.User} request
+   * @param {!proto.zbay.Attendant} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.zbay.User.deserializeBinary
+  proto.zbay.Attendant.deserializeBinary
 );
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.zbay.User)}
+ * @param {function(?grpc.web.RpcError, ?proto.zbay.Attendant)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.zbay.User>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.zbay.Attendant>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.zbay.UsersClient.prototype.update =
+proto.zbay.AttendantsClient.prototype.update =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/zbay.Users/Update',
+      '/zbay.Attendants/Update',
       request,
       metadata || {},
-      methodDescriptor_Users_Update,
+      methodDescriptor_Attendants_Update,
       callback);
 };
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.zbay.User>}
+ * @return {!Promise<!proto.zbay.Attendant>}
  *     Promise that resolves to the response
  */
-proto.zbay.UsersPromiseClient.prototype.update =
+proto.zbay.AttendantsPromiseClient.prototype.update =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/zbay.Users/Update',
+      '/zbay.Attendants/Update',
       request,
       metadata || {},
-      methodDescriptor_Users_Update);
+      methodDescriptor_Attendants_Update);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zbay.User,
- *   !proto.zbay.User>}
+ *   !proto.zbay.Attendant,
+ *   !proto.zbay.Attendant>}
  */
-const methodDescriptor_Users_List = new grpc.web.MethodDescriptor(
-  '/zbay.Users/List',
+const methodDescriptor_Attendants_List = new grpc.web.MethodDescriptor(
+  '/zbay.Attendants/List',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.zbay.User,
-  proto.zbay.User,
+  proto.zbay.Attendant,
+  proto.zbay.Attendant,
   /**
-   * @param {!proto.zbay.User} request
+   * @param {!proto.zbay.Attendant} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.zbay.User.deserializeBinary
+  proto.zbay.Attendant.deserializeBinary
 );
 
 
 /**
- * @param {!proto.zbay.User} request The request proto
+ * @param {!proto.zbay.Attendant} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.zbay.User>}
+ * @return {!grpc.web.ClientReadableStream<!proto.zbay.Attendant>}
  *     The XHR Node Readable Stream
  */
-proto.zbay.UsersClient.prototype.list =
+proto.zbay.AttendantsClient.prototype.list =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/zbay.Users/List',
+      '/zbay.Attendants/List',
       request,
       metadata || {},
-      methodDescriptor_Users_List);
+      methodDescriptor_Attendants_List);
 };
 
 
 /**
- * @param {!proto.zbay.User} request The request proto
+ * @param {!proto.zbay.Attendant} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.zbay.User>}
+ * @return {!grpc.web.ClientReadableStream<!proto.zbay.Attendant>}
  *     The XHR Node Readable Stream
  */
-proto.zbay.UsersPromiseClient.prototype.list =
+proto.zbay.AttendantsPromiseClient.prototype.list =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/zbay.Users/List',
+      '/zbay.Attendants/List',
       request,
       metadata || {},
-      methodDescriptor_Users_List);
+      methodDescriptor_Attendants_List);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zbay.User,
+ *   !proto.zbay.Attendant,
  *   !proto.google.protobuf.Empty>}
  */
-const methodDescriptor_Users_Delete = new grpc.web.MethodDescriptor(
-  '/zbay.Users/Delete',
+const methodDescriptor_Attendants_Delete = new grpc.web.MethodDescriptor(
+  '/zbay.Attendants/Delete',
   grpc.web.MethodType.UNARY,
-  proto.zbay.User,
+  proto.zbay.Attendant,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.zbay.User} request
+   * @param {!proto.zbay.Attendant} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -340,7 +340,7 @@ const methodDescriptor_Users_Delete = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -349,154 +349,154 @@ const methodDescriptor_Users_Delete = new grpc.web.MethodDescriptor(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.zbay.UsersClient.prototype.delete =
+proto.zbay.AttendantsClient.prototype.delete =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/zbay.Users/Delete',
+      '/zbay.Attendants/Delete',
       request,
       metadata || {},
-      methodDescriptor_Users_Delete,
+      methodDescriptor_Attendants_Delete,
       callback);
 };
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
  *     Promise that resolves to the response
  */
-proto.zbay.UsersPromiseClient.prototype.delete =
+proto.zbay.AttendantsPromiseClient.prototype.delete =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/zbay.Users/Delete',
+      '/zbay.Attendants/Delete',
       request,
       metadata || {},
-      methodDescriptor_Users_Delete);
+      methodDescriptor_Attendants_Delete);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zbay.User,
- *   !proto.zbay.User>}
+ *   !proto.zbay.Attendant,
+ *   !proto.zbay.Attendant>}
  */
-const methodDescriptor_Users_Login = new grpc.web.MethodDescriptor(
-  '/zbay.Users/Login',
+const methodDescriptor_Attendants_Login = new grpc.web.MethodDescriptor(
+  '/zbay.Attendants/Login',
   grpc.web.MethodType.UNARY,
-  proto.zbay.User,
-  proto.zbay.User,
+  proto.zbay.Attendant,
+  proto.zbay.Attendant,
   /**
-   * @param {!proto.zbay.User} request
+   * @param {!proto.zbay.Attendant} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.zbay.User.deserializeBinary
+  proto.zbay.Attendant.deserializeBinary
 );
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.zbay.User)}
+ * @param {function(?grpc.web.RpcError, ?proto.zbay.Attendant)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.zbay.User>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.zbay.Attendant>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.zbay.UsersClient.prototype.login =
+proto.zbay.AttendantsClient.prototype.login =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/zbay.Users/Login',
+      '/zbay.Attendants/Login',
       request,
       metadata || {},
-      methodDescriptor_Users_Login,
+      methodDescriptor_Attendants_Login,
       callback);
 };
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.zbay.User>}
+ * @return {!Promise<!proto.zbay.Attendant>}
  *     Promise that resolves to the response
  */
-proto.zbay.UsersPromiseClient.prototype.login =
+proto.zbay.AttendantsPromiseClient.prototype.login =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/zbay.Users/Login',
+      '/zbay.Attendants/Login',
       request,
       metadata || {},
-      methodDescriptor_Users_Login);
+      methodDescriptor_Attendants_Login);
 };
 
 
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zbay.User,
- *   !proto.zbay.User>}
+ *   !proto.zbay.Attendant,
+ *   !proto.zbay.Attendant>}
  */
-const methodDescriptor_Users_Certificate = new grpc.web.MethodDescriptor(
-  '/zbay.Users/Certificate',
+const methodDescriptor_Attendants_Certificate = new grpc.web.MethodDescriptor(
+  '/zbay.Attendants/Certificate',
   grpc.web.MethodType.UNARY,
-  proto.zbay.User,
-  proto.zbay.User,
+  proto.zbay.Attendant,
+  proto.zbay.Attendant,
   /**
-   * @param {!proto.zbay.User} request
+   * @param {!proto.zbay.Attendant} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.zbay.User.deserializeBinary
+  proto.zbay.Attendant.deserializeBinary
 );
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.zbay.User)}
+ * @param {function(?grpc.web.RpcError, ?proto.zbay.Attendant)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.zbay.User>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.zbay.Attendant>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.zbay.UsersClient.prototype.certificate =
+proto.zbay.AttendantsClient.prototype.certificate =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/zbay.Users/Certificate',
+      '/zbay.Attendants/Certificate',
       request,
       metadata || {},
-      methodDescriptor_Users_Certificate,
+      methodDescriptor_Attendants_Certificate,
       callback);
 };
 
 
 /**
- * @param {!proto.zbay.User} request The
+ * @param {!proto.zbay.Attendant} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.zbay.User>}
+ * @return {!Promise<!proto.zbay.Attendant>}
  *     Promise that resolves to the response
  */
-proto.zbay.UsersPromiseClient.prototype.certificate =
+proto.zbay.AttendantsPromiseClient.prototype.certificate =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/zbay.Users/Certificate',
+      '/zbay.Attendants/Certificate',
       request,
       metadata || {},
-      methodDescriptor_Users_Certificate);
+      methodDescriptor_Attendants_Certificate);
 };
 
 
@@ -799,16 +799,16 @@ proto.zbay.AddressesPromiseClient.prototype.delete =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zbay.User,
+ *   !proto.zbay.Attendant,
  *   !proto.zbay.Address>}
  */
 const methodDescriptor_Addresses_List = new grpc.web.MethodDescriptor(
   '/zbay.Addresses/List',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.zbay.User,
+  proto.zbay.Attendant,
   proto.zbay.Address,
   /**
-   * @param {!proto.zbay.User} request
+   * @param {!proto.zbay.Attendant} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -819,7 +819,7 @@ const methodDescriptor_Addresses_List = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.zbay.User} request The request proto
+ * @param {!proto.zbay.Attendant} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.zbay.Address>}
@@ -836,7 +836,7 @@ proto.zbay.AddressesClient.prototype.list =
 
 
 /**
- * @param {!proto.zbay.User} request The request proto
+ * @param {!proto.zbay.Attendant} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.zbay.Address>}
@@ -1151,16 +1151,16 @@ proto.zbay.MemosPromiseClient.prototype.delete =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zbay.User,
+ *   !proto.zbay.Attendant,
  *   !proto.zbay.Memo>}
  */
 const methodDescriptor_Memos_List = new grpc.web.MethodDescriptor(
   '/zbay.Memos/List',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.zbay.User,
+  proto.zbay.Attendant,
   proto.zbay.Memo,
   /**
-   * @param {!proto.zbay.User} request
+   * @param {!proto.zbay.Attendant} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -1171,7 +1171,7 @@ const methodDescriptor_Memos_List = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.zbay.User} request The request proto
+ * @param {!proto.zbay.Attendant} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.zbay.Memo>}
@@ -1188,7 +1188,7 @@ proto.zbay.MemosClient.prototype.list =
 
 
 /**
- * @param {!proto.zbay.User} request The request proto
+ * @param {!proto.zbay.Attendant} request The request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.zbay.Memo>}
