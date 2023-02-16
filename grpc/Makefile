@@ -23,7 +23,7 @@ prepare:
 #	@-docker swarm init
 #	@-docker network create --driver=overlay devel
 
-generate: generate-go
+generate: generate-go generate-js
 
 generate-go:
 	@$(PROTOC) -I./service --go_out=. --go-grpc_out=. service/*.proto
@@ -45,7 +45,7 @@ generate-js:
 	@$(PROTOC) -I./service service/*.proto \
 	--js_out=import_style=commonjs:service/js \
 	--grpc-web_out=import_style=commonjs+dts,mode=grpcweb:service/js
-#	cp -rf service/js/* ../pwa/src/sdk
+	cp -rf service/js/* ../pwa/src/sdk
 	@echo Generate-js completely.
 
 generate-descriptor:
