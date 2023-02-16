@@ -16,11 +16,11 @@
         @slideChange="onSlideChange" :pagination="{ clickable: true }">
         <swiper-slide>
           <!-- <ion-header collapse="condense">
-                        <ion-toolbar>
-                          <ion-title size="large">Tab 1</ion-title>
-                        </ion-toolbar>
-                      </ion-header>
-                      <ExploreContainer name="Tab 1 page" /> -->
+                                              <ion-toolbar>
+                                                <ion-title size="large">Tab 1</ion-title>
+                                              </ion-toolbar>
+                                            </ion-header>
+                                            <ExploreContainer name="Tab 1 page" /> -->
           <img alt="Silhouette of mountains" src="assets/0211.jpeg" />
         </swiper-slide>
         <swiper-slide>
@@ -62,13 +62,18 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+      <ion-list>
+        <li v-for="item in hospitals" :key="JSON.stringify(item['id'])">
+          {{ item['name'] }}
+        </li>
+      </ion-list>
     </ion-content>
 </ion-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, /*IonTitle,*/ IonContent, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, IonList,/*IonTitle,*/ IonContent, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { location } from 'ionicons/icons';
 import AMapLoader from '@amap/amap-jsapi-loader';
@@ -86,20 +91,20 @@ export default defineComponent({
     console.log('Home page will enter');
     this.getLocation();
   },
-  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonButton, IonIcon, /*IonTitle,*/ IonContent, IonPage, Swiper, SwiperSlide, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow },
+  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonButton, IonIcon, IonList, /*IonTitle,*/ IonContent, IonPage, Swiper, SwiperSlide, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow },
   data() {
     return {
       position: "湖北荆门",
       autoplay: { delay: 3000 },
-      emp: { name: 'Ram', age: 25 }
+      hospitals: [],
     }
   },
   methods: {
     getLocation() {
       AMapLoader.load({
         key: '60d396703bef1a6a93d2eca45a70e764',
-        version: '1.4.10',
-        plugins: ['AMap.Geolocation'],
+        version: '1.4.15',
+        plugins: ['AMap.Geolocation', 'AMap.PlaceSearch'],
       }).then(AMap => {
         const geolocation = new AMap.Geolocation({
           enableHighAccuracy: true,
@@ -111,6 +116,18 @@ export default defineComponent({
             console.log("111", result)
             if (result.addressComponent) {
               this.position = result.addressComponent.province;
+
+              var placeSearch = new AMap.PlaceSearch({
+                pageSize: 50, // 单页显示结果条数
+                // city 指定搜索所在城市，支持传入格式有：城市名、citycode和adcode
+                city: result.addressComponent.citycode,
+              });
+
+              placeSearch.search('三甲医院', (status: any, result: any) => {
+                // 查询成功时，result即对应匹配的POI信息
+                // console.log(JSON.stringify(result));
+                this.$data.hospitals = result.poiList.pois;
+              });
             }
           } else {
             console.log("222", result);
