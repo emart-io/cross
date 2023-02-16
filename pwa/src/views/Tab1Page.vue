@@ -2,11 +2,13 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-button size="small" fill="clear" v-on:click="getLocation">
+        <ion-button size="small" fill="clear" v-on:click="getLocation" slot="start">
           <ion-icon slot="start" :icon="location"></ion-icon>
           {{ position }}
         </ion-button>
-        <!-- <ion-title>暖心陪诊</ion-title> -->
+        <ion-button slot="end" fill="clear">
+          <!-- e+陪诊 -->
+        </ion-button>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -14,11 +16,11 @@
         @slideChange="onSlideChange" :pagination="{ clickable: true }">
         <swiper-slide>
           <!-- <ion-header collapse="condense">
-            <ion-toolbar>
-              <ion-title size="large">Tab 1</ion-title>
-            </ion-toolbar>
-          </ion-header>
-          <ExploreContainer name="Tab 1 page" /> -->
+                        <ion-toolbar>
+                          <ion-title size="large">Tab 1</ion-title>
+                        </ion-toolbar>
+                      </ion-header>
+                      <ExploreContainer name="Tab 1 page" /> -->
           <img alt="Silhouette of mountains" src="assets/0211.jpeg" />
         </swiper-slide>
         <swiper-slide>
@@ -29,6 +31,7 @@
           <img alt="Silhouette of mountains" src="assets/pz-ser-banner.jpg" />
         </swiper-slide>
       </swiper>
+      <!-- <div id="container"></div> -->
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -60,7 +63,7 @@
         </ion-row>
       </ion-grid>
     </ion-content>
-  </ion-page>
+</ion-page>
 </template>
 
 <script lang="ts">
@@ -69,6 +72,7 @@ import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, /*IonTitle,*/ IonCo
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { location } from 'ionicons/icons';
 import AMapLoader from '@amap/amap-jsapi-loader';
+// import { shallowRef } from '@vue/reactivity'
 import { Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -112,6 +116,14 @@ export default defineComponent({
             console.log("222", result);
           }
         })
+
+        // this.map = new AMap.Map("container", {  //设置地图容器id
+        //   viewMode: "3D",    //是否为3D地图模式
+        //   zoom: 3,           //初始化地图级别
+        //   center: [105.602725, 37.076636], //初始化地图中心点位置
+        //   mapStyle: 'amap://styles/light', //设置地图的显示样式
+        // });
+
       }).catch((e) => {
         console.log(e)
       })
@@ -124,11 +136,13 @@ export default defineComponent({
     const onSlideChange = () => {
       console.log('slide change');
     };
+    // const map = shallowRef(null);
     return {
       location,
       onSwiper,
       onSlideChange,
       modules: [Autoplay, Pagination],
+      // map
     }
   }
 });
@@ -151,4 +165,11 @@ export default defineComponent({
   object-fit: cover;
   /* border-radius: 15px; */
 }
+
+/* #container {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 60%;
+} */
 </style>

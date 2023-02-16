@@ -31,7 +31,7 @@ export default defineComponent({
   components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
   data() {
     var attendant = new Attendant().toObject();
-    attendant.name = 'test';
+    //attendant.name = 'test';
 
     //let u2=new User();
     new Attendant().setName(attendant.name).setIcon("").setId("d");
