@@ -92,7 +92,7 @@ export default defineComponent({
   components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonButton, IonIcon, IonList, IonLabel, IonContent, IonPage, Swiper, SwiperSlide, IonCard, /*IonCardContent,*/ IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow, IonItem, IonThumbnail },
   data() {
     return {
-      position: "北京市",
+      position: "湖北荆门",
       autoplay: { delay: 3000 },
       hospitals: [],
     }
