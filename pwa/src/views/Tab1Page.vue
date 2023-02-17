@@ -16,11 +16,11 @@
         @slideChange="onSlideChange" :pagination="{ clickable: true }">
         <swiper-slide>
           <!-- <ion-header collapse="condense">
-                                                        <ion-toolbar>
-                                                          <ion-title size="large">Tab 1</ion-title>
-                                                        </ion-toolbar>
-                                                      </ion-header>
-                                                      <ExploreContainer name="Tab 1 page" /> -->
+                                                          <ion-toolbar>
+                                                            <ion-title size="large">Tab 1</ion-title>
+                                                          </ion-toolbar>
+                                                        </ion-header>
+                                                        <ExploreContainer name="Tab 1 page" /> -->
           <img alt="Silhouette of mountains" src="assets/0211.jpeg" />
         </swiper-slide>
         <swiper-slide>
@@ -101,7 +101,7 @@ export default defineComponent({
     getLocation() {
       AMapLoader.load({
         key: '60d396703bef1a6a93d2eca45a70e764',
-        version: '2.0',
+        version: '1.4.15',
         plugins: ['AMap.Geolocation', 'AMap.PlaceSearch'],
       }).then(AMap => {
         const geolocation = new AMap.Geolocation({
