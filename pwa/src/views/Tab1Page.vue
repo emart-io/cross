@@ -36,7 +36,7 @@
         <ion-row>
           <ion-col>
             <ion-card>
-              <img alt="Silhouette of mountains" src="assets/pz-ser-banner.jpg" />
+              <img alt="Silhouette of mountains" src="assets/peizhen4.png" />
               <ion-card-header>
                 <ion-card-title>就医陪诊</ion-card-title>
                 <ion-card-subtitle>暖心陪诊，安心</ion-card-subtitle>
@@ -45,7 +45,7 @@
           </ion-col>
           <ion-col>
             <ion-card>
-              <img alt="Silhouette of mountains" src="assets/pz-ser-banner.jpg" />
+              <img alt="Silhouette of mountains" src="assets/peizhen4.png" />
               <ion-card-header>
                 <ion-card-title>取送结果</ion-card-title>
                 <ion-card-subtitle>安全方便，快捷</ion-card-subtitle>
