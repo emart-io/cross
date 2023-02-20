@@ -31,7 +31,7 @@
           <img alt="Silhouette of mountains" src="assets/peizhen5.png" />
         </swiper-slide>
       </swiper>
-      <div id="container" style="display:none"></div>
+      <!-- <div id="container" style="display:none"></div> -->
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -67,7 +67,7 @@
         </ion-item>
       </ion-list>
     </ion-content>
-</ion-page>
+  </ion-page>
 </template>
 
 <script lang="ts">
