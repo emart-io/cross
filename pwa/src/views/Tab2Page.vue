@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title mode="ios">陪诊人员</ion-title>
+        <ion-title>陪诊人员</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -16,17 +16,27 @@
       </ion-header>
       {{ attendant.name }}
       <!-- <ExploreContainer name="Tab 2 page " /> -->
-      <ion-item>
+      <ion-item lines="none">
         <ion-avatar slot="start">
           <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
         </ion-avatar>
-        <ion-label>Item Avatar1</ion-label>
+        <ion-label>
+          <h3>张三丰</h3>
+          <p>关注量60|人气50</p>
+          <p>介绍：ccc</p>
+        </ion-label>
+        <ion-button>预约</ion-button>
       </ion-item>
-      <ion-item>
+      <ion-item lines="none">
         <ion-avatar slot="start">
           <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
         </ion-avatar>
-        <ion-label>Item Avatar2</ion-label>
+        <ion-label>
+          <h3>李四娘</h3>
+          <p>关注量60|人气50</p>
+          <p>介绍：ccc</p>
+        </ion-label>
+        <ion-button>预约</ion-button>
       </ion-item>
     </ion-content>
   </ion-page>
@@ -34,14 +44,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonAvatar, IonItem, IonLabel } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonAvatar, IonItem, IonLabel, IonButton } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { Attendant } from '../sdk/attendant_pb';
 import { apiService } from '../api.service';
 
 export default defineComponent({
   name: 'Tab2Page',
-  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonSearchbar, IonAvatar, IonItem, IonLabel },
+  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonSearchbar, IonAvatar, IonItem, IonLabel, IonButton },
   data() {
     var attendant = new Attendant().toObject();
     //attendant.name = 'test';
