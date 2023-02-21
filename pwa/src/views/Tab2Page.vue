@@ -18,7 +18,7 @@
       <!-- <ExploreContainer name="Tab 2 page " /> -->
       <ion-item lines="none">
         <ion-avatar slot="start">
-          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          <img alt="Silhouette of a person's head" src="assets/peizhen3.png" />
         </ion-avatar>
         <ion-label>
           <h3>张三丰</h3>
@@ -29,7 +29,7 @@
       </ion-item>
       <ion-item lines="none">
         <ion-avatar slot="start">
-          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          <img alt="Silhouette of a person's head" src="assets/pz-ser-banner.jpg" />
         </ion-avatar>
         <ion-label>
           <h3>李四娘</h3>
