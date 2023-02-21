@@ -10,9 +10,9 @@
       <ion-searchbar mode="ios" v-model="attendant.name" placeholder="请输入陪诊员姓名"></ion-searchbar>
       <!-- </ion-toolbar> -->
       <ion-header collapse="condense">
-        <ion-toolbar>
+        <!-- <ion-toolbar>
           <ion-title size="large">Tab 2</ion-title>
-        </ion-toolbar>
+        </ion-toolbar> -->
       </ion-header>
       {{ attendant.name }}
       <!-- <ExploreContainer name="Tab 2 page " /> -->
