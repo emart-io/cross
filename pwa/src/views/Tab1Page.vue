@@ -16,11 +16,11 @@
         @slideChange="onSlideChange" :pagination="{ clickable: true }">
         <swiper-slide>
           <!-- <ion-header collapse="condense">
-                                                          <ion-toolbar>
-                                                            <ion-title size="large">Tab 1</ion-title>
-                                                          </ion-toolbar>
-                                                        </ion-header>
-                                                        <ExploreContainer name="Tab 1 page" /> -->
+            <ion-toolbar>
+              <ion-title size="large">Tab 1</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <ExploreContainer name="Tab 1 page" /> -->
           <img alt="Silhouette of mountains" src="assets/0211.jpeg" />
         </swiper-slide>
         <swiper-slide>
