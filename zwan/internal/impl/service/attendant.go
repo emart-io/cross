@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	AttendantTable = "Attendants"
+	attendantTable = "Attendants"
 )
 
 type AttendantsImpl struct {
@@ -20,47 +20,47 @@ type AttendantsImpl struct {
 func (s *AttendantsImpl) Add(ctx context.Context, in *pb.Attendant) (*pb.Attendant, error) {
 	in.Id = in.Telephone
 	in.Created = timestamppb.Now() // timestamppb.Now()
-	if err := db.Insert(AttendantTable, in); err != nil {
+	if err := db.Insert(attendantTable, in); err != nil {
 		return nil, err
 	}
 	return in, nil
 }
 
 func (s *AttendantsImpl) Get(ctx context.Context, in *pb.Attendant) (*pb.Attendant, error) {
-	Attendant := pb.Attendant{}
-	if err := db.GetById(AttendantTable, in.Id, &Attendant); err != nil {
+	attendant := pb.Attendant{}
+	if err := db.GetById(attendantTable, in.Id, &attendant); err != nil {
 		return nil, err
 	}
-	return &Attendant, nil
+	return &attendant, nil
 }
 
 func (s *AttendantsImpl) Update(ctx context.Context, in *pb.Attendant) (*pb.Attendant, error) {
-	Attendant, err := s.Get(ctx, in)
+	attendant, err := s.Get(ctx, in)
 	if err != nil {
 		return nil, err
 	}
 	if in.Icon != "" {
-		Attendant.Icon = in.Icon
+		attendant.Icon = in.Icon
 	}
 	if in.Signature != "" {
-		Attendant.Signature = in.Signature
+		attendant.Signature = in.Signature
 	}
 	if in.Shops != nil {
-		Attendant.Shops = in.Shops
+		attendant.Shops = in.Shops
 	}
-	if err := db.Update(AttendantTable, in.Id, Attendant); err != nil {
+	if err := db.Update(attendantTable, in.Id, attendant); err != nil {
 		return nil, err
 	}
 	return in, nil
 }
 
 func (s *AttendantsImpl) List(in *pb.Attendant, stream pb.Attendants_ListServer) error {
-	Attendants := []*pb.Attendant{}
-	if err := db.List(AttendantTable, &Attendants, " order by data->'$.created' desc"); err != nil {
+	attendants := []*pb.Attendant{}
+	if err := db.List(attendantTable, &attendants, " order by data->'$.created' desc"); err != nil {
 		return err
 	}
 
-	for _, v := range Attendants {
+	for _, v := range attendants {
 		if err := stream.Send(v); err != nil {
 			return err
 		}
@@ -70,28 +70,28 @@ func (s *AttendantsImpl) List(in *pb.Attendant, stream pb.Attendants_ListServer)
 }
 
 func (s *AttendantsImpl) Delete(ctx context.Context, in *pb.Attendant) (*emptypb.Empty, error) {
-	if err := db.Delete(AttendantTable, in.Id); err != nil {
+	if err := db.Delete(attendantTable, in.Id); err != nil {
 		return nil, err
 	}
 	return &emptypb.Empty{}, nil
 }
 
 func (s *AttendantsImpl) Login(ctx context.Context, in *pb.Attendant) (*pb.Attendant, error) {
-	Attendant := pb.Attendant{}
-	err := db.Get(AttendantTable, &Attendant, "WHERE data->>'$.telephone'='%s' and data->>'$.password'='%s'", in.Telephone, in.Password)
+	attendant := pb.Attendant{}
+	err := db.Get(attendantTable, &attendant, "WHERE data->>'$.telephone'='%s' and data->>'$.password'='%s'", in.Telephone, in.Password)
 	if err != nil {
 		return nil, err
 	}
-	return &Attendant, nil
+	return &attendant, nil
 }
 
 func (s *AttendantsImpl) Certificate(ctx context.Context, in *pb.Attendant) (*pb.Attendant, error) {
-	Attendant, err := s.Get(ctx, in)
+	attendant, err := s.Get(ctx, in)
 	if err != nil {
 		return nil, err
 	}
-	Attendant.Cert = in.Cert
-	if err := db.Update(AttendantTable, in.Id, Attendant); err != nil {
+	attendant.Cert = in.Cert
+	if err := db.Update(attendantTable, in.Id, attendant); err != nil {
 		return nil, err
 	}
 
