@@ -14,7 +14,7 @@ func TestXxx(t *testing.T) {
 	}
 	id := "abcdef"
 	address := &pb.Address{Id: id}
-	if err := Upsert("test", id, address); err != nil {
+	if _, err := Upsert("test", id, address); err != nil {
 		t.Error()
 	}
 	add2 := &pb.Address{}

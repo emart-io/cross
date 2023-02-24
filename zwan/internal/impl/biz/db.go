@@ -37,22 +37,20 @@ func checkTable(table string) (sql.Result, error) {
 	return DB.Exec(fmt.Sprintf("CREATE TABLE IF NOT EXISTS %s (data JSON)", table))
 }
 
-func Upsert(table, uid string, obj proto.Message) error {
+func Upsert(table, uid string, obj proto.Message) (sql.Result, error) {
 	checkTable(table)
 	jsonv, err := marshaler.Marshal(obj)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	var result = ""
 	row := DB.QueryRow(fmt.Sprintf("SELECT data FROM %s WHERE data->>'$.id'='%s'", table, uid))
 	if err := row.Scan(&result); err == sql.ErrNoRows {
-		_, err := DB.Exec(fmt.Sprintf("INSERT INTO %s (data) VALUES (?)", table), jsonv)
-		return err
+		return DB.Exec(fmt.Sprintf("INSERT INTO %s (data) VALUES (?)", table), jsonv)
 	}
 
-	_, err = DB.Exec(fmt.Sprintf("UPDATE %s SET data=? WHERE data->>'$.id'='%s'", table, uid), jsonv)
-	return err
+	return DB.Exec(fmt.Sprintf("UPDATE %s SET data=? WHERE data->>'$.id'='%s'", table, uid), jsonv)
 }
 
 func GetById(table string, id interface{}, obj proto.Message) error {
