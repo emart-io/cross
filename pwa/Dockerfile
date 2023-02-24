@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:alpine-slim
 
 ADD ./nginx.conf /etc/nginx/conf.d/default.conf
 ADD ./cert/fullchain.cer ./cert/iyou.city.key /etc/

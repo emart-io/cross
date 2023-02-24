@@ -1,0 +1,18 @@
+docker network create --driver=overlay best
+
+docker service create --name mysql_emart --network best --mount type=bind,source=/root/.emart_mysqldata,destination=/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=emart mysql:8
+
+docker service create --name zbay --network best --mount type=bind,source=/root/emart_uploads,destination=/uploads jmzwcn/zbay:20210305-2245
+
+docker service create --name pwa --network best -p 80:80 -p443:443 jmzwcn/pwa:20210314-1639
+
+# 可选：RESTful接口专用
+docker service create --name envoy --network best -p 8080:8080 jmzwcn/envoy:20210422-1006
+# 用法举例
+curl -X POST 'http://iyou.city:8080/zbay.Commodities/List' -H 'Content-Type: application/json' -d '{"id":"15311429910"}'
+
+
+ipv6:
+docker network create best
+docker run -d --name zwan --network best --network-alias zwan --restart=always jmzwcn/zwan:20230224-2213
+docker run -d --name pwa --network best --restart=always -p 8443:443 jmzwcn/pwa:20230223-1658
