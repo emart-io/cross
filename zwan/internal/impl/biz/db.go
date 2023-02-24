@@ -156,7 +156,7 @@ func UpdateTx(tx *sql.Tx, table string, id interface{}, newObj proto.Message) (s
 	if err != nil {
 		return nil, err
 	}
-	return tx.Exec("UPDATE "+table+" SET data=CAST(? AS JSON) WHERE data->'$.id'=?", jsonv, id)
+	return tx.Exec("UPDATE "+table+" SET data=? WHERE data->>'$.id'=?", jsonv, id)
 }
 
 func UpdateKVS(table string, id interface{}, kvs map[string]interface{}) (sql.Result, error) {
@@ -168,7 +168,7 @@ func UpdateKVS(table string, id interface{}, kvs map[string]interface{}) (sql.Re
 		keys = append(keys, ",'"+k+"',?")
 		values = append(values, v)
 	}
-	sql := "UPDATE " + table + " SET data=" + "JSON_SET(data" + strings.Join(keys, "") + ") WHERE data->'$.id'= ?"
+	sql := "UPDATE " + table + " SET data=" + "JSON_SET(data" + strings.Join(keys, "") + ") WHERE data->>'$.id'= ?"
 	return DB.Exec(sql, append(values, id)...)
 }
 
@@ -189,5 +189,5 @@ func Delete(table string, id interface{}) error {
 }
 
 func DeleteTx(tx *sql.Tx, table string, id interface{}) (sql.Result, error) {
-	return tx.Exec("DELETE FROM "+table+" WHERE data->'$.id' = ?", id)
+	return tx.Exec("DELETE FROM "+table+" WHERE data->>'$.id' = ?", id)
 }
