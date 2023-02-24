@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
+	db "github.com/emart.io/cross/zwan/internal/impl/biz"
 	pb "github.com/emart.io/cross/zwan/service/go"
-	"github.com/jmzwcn/db"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
@@ -78,7 +78,7 @@ func (s *AttendantsImpl) Delete(ctx context.Context, in *pb.Attendant) (*emptypb
 
 func (s *AttendantsImpl) Login(ctx context.Context, in *pb.Attendant) (*pb.Attendant, error) {
 	Attendant := pb.Attendant{}
-	err := db.Get(AttendantTable, map[string]interface{}{"$.telephone": in.Telephone, "$.password": in.Password}, &Attendant)
+	err := db.Get(AttendantTable, &Attendant, "WHERE data->>'$.telephone'='%s' and data->>'$.password'='%s'", in.Telephone, in.Password)
 	if err != nil {
 		return nil, err
 	}
