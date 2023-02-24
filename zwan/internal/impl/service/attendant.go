@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	attendantTable = "Attendants"
+	attendantTable = "attendants"
 )
 
 type AttendantsImpl struct {
@@ -20,7 +20,7 @@ type AttendantsImpl struct {
 func (s *AttendantsImpl) Add(ctx context.Context, in *pb.Attendant) (*pb.Attendant, error) {
 	in.Id = in.Telephone
 	in.Created = timestamppb.Now() // timestamppb.Now()
-	if err := db.Insert(attendantTable, in); err != nil {
+	if err := db.Upsert(attendantTable, in.Id, in); err != nil {
 		return nil, err
 	}
 	return in, nil
@@ -48,7 +48,7 @@ func (s *AttendantsImpl) Update(ctx context.Context, in *pb.Attendant) (*pb.Atte
 	if in.Shops != nil {
 		attendant.Shops = in.Shops
 	}
-	if err := db.Update(attendantTable, in.Id, attendant); err != nil {
+	if err := db.Upsert(attendantTable, in.Id, attendant); err != nil {
 		return nil, err
 	}
 	return in, nil
@@ -70,7 +70,7 @@ func (s *AttendantsImpl) List(in *pb.Attendant, stream pb.Attendants_ListServer)
 }
 
 func (s *AttendantsImpl) Delete(ctx context.Context, in *pb.Attendant) (*emptypb.Empty, error) {
-	if err := db.Delete(attendantTable, in.Id); err != nil {
+	if _, err := db.Delete(attendantTable, in.Id); err != nil {
 		return nil, err
 	}
 	return &emptypb.Empty{}, nil
@@ -91,7 +91,7 @@ func (s *AttendantsImpl) Certificate(ctx context.Context, in *pb.Attendant) (*pb
 		return nil, err
 	}
 	attendant.Cert = in.Cert
-	if err := db.Update(attendantTable, in.Id, attendant); err != nil {
+	if err := db.Upsert(attendantTable, in.Id, attendant); err != nil {
 		return nil, err
 	}
 

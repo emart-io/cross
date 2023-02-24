@@ -14,22 +14,14 @@ import (
 )
 
 var (
-	DB *sql.DB
-	//checked   = make(map[string]bool)
+	DB        *sql.DB
 	marshaler = protojson.MarshalOptions{EmitUnpopulated: true}
 )
-
-// func InitDB(db *sql.DB, tables ...string) {
-// 	DB = db
-// 	for _, v := range tables {
-// 		checkTable(v)
-// 	}
-// }
 
 func init() {
 	var err error
 	for i := 1; i <= 5; i++ {
-		DB, err = sql.Open("sqlite3", "./foo.db") //sql.Open("mysql", dsn)
+		DB, err = sql.Open("sqlite3", "./foo.db")
 		if err != nil {
 			log.Errorf("Connect failed: %s, %d", err, i)
 			time.Sleep(time.Second * 5)
@@ -39,55 +31,28 @@ func init() {
 		}
 	}
 	log.Debugln("DB init completely: ")
-	DB.SetMaxIdleConns(0)
 }
 
 func checkTable(table string) (sql.Result, error) {
-	// if checked[table] {
-	// 	return nil, nil
-	// }
-	// checked[table] = true
 	return DB.Exec(fmt.Sprintf("CREATE TABLE IF NOT EXISTS %s (data JSON)", table))
 }
 
-func Insert(table string, obj proto.Message) error {
-	tx, err := DB.Begin()
-	if err != nil {
-		return err
-	}
-	if _, err := InsertTx(tx, table, obj); err != nil {
-		tx.Rollback()
-		return err
-	}
-	if err := tx.Commit(); err != nil {
-		tx.Rollback()
-		return err
-	}
-	return nil
-}
-
-func InsertTx(tx *sql.Tx, table string, obj proto.Message) (sql.Result, error) {
+func Upsert(table, uid string, obj proto.Message) error {
 	checkTable(table)
 	jsonv, err := marshaler.Marshal(obj)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return tx.Exec("INSERT INTO "+table+"(data) VALUES (?)", jsonv)
-}
 
-func InsertIfNotExist(table string, id interface{}, obj proto.Message) error {
-	if GetById(table, id, proto.Clone(obj)) == sql.ErrNoRows {
-		return Insert(table, obj)
+	var result = ""
+	row := DB.QueryRow(fmt.Sprintf("SELECT data FROM %s WHERE data->>'$.id'='%s'", table, uid))
+	if err := row.Scan(&result); err == sql.ErrNoRows {
+		_, err := DB.Exec(fmt.Sprintf("INSERT INTO %s (data) VALUES (?)", table), jsonv)
+		return err
 	}
-	return nil
-}
 
-// Update||Insert
-func Upsert(table string, id interface{}, obj proto.Message) error {
-	if err := GetById(table, id, proto.Clone(obj)); err == sql.ErrNoRows {
-		return Insert(table, obj)
-	}
-	return Update(table, id, obj)
+	_, err = DB.Exec(fmt.Sprintf("UPDATE %s SET data=? WHERE data->>'$.id'='%s'", table, uid), jsonv)
+	return err
 }
 
 func GetById(table string, id interface{}, obj proto.Message) error {
@@ -133,61 +98,6 @@ func List(table string, result interface{}, clause ...string) error {
 	return nil
 }
 
-func Update(table string, id interface{}, newObj proto.Message) error {
-	tx, err := DB.Begin()
-	if err != nil {
-		return err
-	}
-
-	if _, err := UpdateTx(tx, table, id, newObj); err != nil {
-		tx.Rollback()
-		return err
-	}
-
-	if err := tx.Commit(); err != nil {
-		tx.Rollback()
-		return err
-	}
-	return nil
-}
-
-func UpdateTx(tx *sql.Tx, table string, id interface{}, newObj proto.Message) (sql.Result, error) {
-	jsonv, err := marshaler.Marshal(newObj)
-	if err != nil {
-		return nil, err
-	}
-	return tx.Exec("UPDATE "+table+" SET data=? WHERE data->>'$.id'=?", jsonv, id)
-}
-
-func UpdateKVS(table string, id interface{}, kvs map[string]interface{}) (sql.Result, error) {
-	var (
-		keys   []string
-		values []interface{}
-	)
-	for k, v := range kvs { // key should be [json-path], e.g:$.id
-		keys = append(keys, ",'"+k+"',?")
-		values = append(values, v)
-	}
-	sql := "UPDATE " + table + " SET data=" + "JSON_SET(data" + strings.Join(keys, "") + ") WHERE data->>'$.id'= ?"
-	return DB.Exec(sql, append(values, id)...)
-}
-
-func Delete(table string, id interface{}) error {
-	tx, err := DB.Begin()
-	if err != nil {
-		return err
-	}
-	if _, err := DeleteTx(tx, table, id); err != nil {
-		tx.Rollback()
-		return err
-	}
-	if err := tx.Commit(); err != nil {
-		tx.Rollback()
-		return err
-	}
-	return nil
-}
-
-func DeleteTx(tx *sql.Tx, table string, id interface{}) (sql.Result, error) {
-	return tx.Exec("DELETE FROM "+table+" WHERE data->>'$.id' = ?", id)
+func Delete(table string, id interface{}) (sql.Result, error) {
+	return DB.Exec("DELETE FROM "+table+" WHERE data->>'$.id' = ?", id)
 }
