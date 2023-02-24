@@ -12,7 +12,7 @@ func TestXxx(t *testing.T) {
 	if _, err := checkTable("test"); err != nil {
 		t.Error(err)
 	}
-	id := "abcde"
+	id := "abcdef"
 	address := &pb.Address{Id: id}
 	if err := Upsert("test", id, address); err != nil {
 		t.Error()
