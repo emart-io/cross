@@ -13,17 +13,43 @@
       </ion-header> -->
 
       <ExploreContainer name="TODO" />
+
+      <ion-button expand="block" size="small" @click="openModal">
+        陪诊员加入
+        <!-- <ion-icon slot="end" name="star"></ion-icon> -->
+      </ion-button>
+      <p>{{ message }}</p>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, modalController,IonButton } from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
+import ModalAttendant from '@/components/ModalAttendant.vue';
 
 export default defineComponent({
   name: 'Tab4Page',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage,IonButton },
+  data() {
+    return {
+      message: 'test',
+    };
+  },
+  methods: {
+    async openModal() {
+      const modal = await modalController.create({
+        component: ModalAttendant,
+      });
+      modal.present();
+
+      const { data, role } = await modal.onWillDismiss();
+
+      if (role === 'confirm') {
+        this.message = `Hello, ${data}!`;
+      }
+    },
+  },
 });
 </script>
