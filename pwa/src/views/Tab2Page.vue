@@ -65,7 +65,7 @@ export default defineComponent({
   name: 'Tab2Page',
   ionViewWillEnter() {
     console.log('Home page will enter');
-    //this.getLocation();
+    this.attendants = [];
     let stream = apiService.attendantClient.list(new Attendant());
     stream.on('data', response => {
       //let endTime = new Date().getTime();
@@ -81,7 +81,7 @@ export default defineComponent({
   components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonSearchbar, IonAvatar, IonItem, IonLabel, IonButton },
   data() {
     var attendant = new Attendant().toObject();
-    attendant.name = 'test';
+    //attendant.name = 'test';
     var attendants: Attendant.AsObject[] = [];
     return {
       attendant,
