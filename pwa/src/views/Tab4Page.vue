@@ -34,7 +34,7 @@ export default defineComponent({
   components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage,IonButton },
   data() {
     return {
-      message: 'test',
+      message: '',
     };
   },
   methods: {
@@ -45,7 +45,6 @@ export default defineComponent({
       modal.present();
 
       const { data, role } = await modal.onWillDismiss();
-
       if (role === 'confirm') {
         this.message = `Hello, ${data}!`;
       }
