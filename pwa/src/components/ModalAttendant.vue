@@ -50,7 +50,11 @@ export default defineComponent({
             return modalController.dismiss(null, 'cancel');
         },
         confirm() {
-            var att = new Attendant().setName(this.$data.attendant.name);
+            if (this.attendant.name == '') {
+                alert('请输入姓名')
+                return
+            }
+            var att = new Attendant().setName(this.attendant.name);
             apiService.attendantClient.add(att).catch(err => {
                 console.log(JSON.stringify(err));
             });
