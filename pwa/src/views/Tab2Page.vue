@@ -75,6 +75,7 @@ export default defineComponent({
       //console.log(endTime - startTime);
     });
     stream.on('error', err => {
+      console.log(err);
       //utilsService.alert(JSON.stringify(err));
     });
   },
