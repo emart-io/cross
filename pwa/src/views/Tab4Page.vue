@@ -5,12 +5,12 @@
         <ion-title>我的e+</ion-title>
       </ion-toolbar>
     </ion-header> -->
-    <br /> <br />
+    <br />
     <ion-item>
       <ion-thumbnail slot="start">
         <img alt="Silhouette of mountains" src="assets/peizhen3.png" />
       </ion-thumbnail>
-      <ion-label>牙牙学语</ion-label>
+      <ion-label>咿呀学语</ion-label>
     </ion-item>
     <ion-content :fullscreen="true">
       <!-- <ion-header collapse="condense">
