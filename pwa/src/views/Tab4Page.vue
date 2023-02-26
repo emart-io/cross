@@ -10,7 +10,7 @@
       <ion-thumbnail slot="start">
         <img alt="Silhouette of mountains" src="assets/peizhen3.png" />
       </ion-thumbnail>
-      <ion-label>司徒雷登</ion-label>
+      <ion-label>牙牙学语</ion-label>
     </ion-item>
     <ion-content :fullscreen="true">
       <!-- <ion-header collapse="condense">

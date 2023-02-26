@@ -7,7 +7,7 @@
     </ion-header>
     <ion-content :fullscreen="true">
       <!-- <ion-toolbar> -->
-      <ion-searchbar mode="ios" v-model="attendant.name" placeholder="请输入陪诊员姓名"></ion-searchbar>
+      <ion-searchbar mode="ios" v-model="attendant.name" :animated="true" placeholder="请输入陪诊员姓名搜索"></ion-searchbar>
       <!-- </ion-toolbar> -->
       <ion-header collapse="condense">
         <!-- <ion-toolbar>
