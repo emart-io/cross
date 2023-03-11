@@ -2,6 +2,8 @@ package service
 
 import (
 	"context"
+	"fmt"
+	"os"
 
 	pb "github.com/emart.io/cross/zwan/service/go"
 	"github.com/jmzwcn/db"
@@ -14,11 +16,18 @@ const (
 )
 
 var (
-	dsn = "root:123456@tcp(mysql_emart:3306)/emart"
+	mysqlServiceName = "mysql_emart"
+	mysqlServicePort = "3306"
 )
 
 func init() {
-	db.Open(dsn)
+	if msn, ok := os.LookupEnv("MYSQL_SERVICE_NAME"); ok {
+		mysqlServiceName = msn
+	}
+	if msp, ok := os.LookupEnv("MYSQL_SERVICE_PORT"); ok {
+		mysqlServicePort = msp
+	}
+	db.Open(fmt.Sprintf("root:123456@tcp(%s:%s)/emart", mysqlServiceName, mysqlServicePort))
 }
 
 type AttendantsImpl struct {
