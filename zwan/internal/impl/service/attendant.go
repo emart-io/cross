@@ -6,6 +6,7 @@ import (
 	"os"
 
 	pb "github.com/emart.io/cross/zwan/service/go"
+	"github.com/google/uuid"
 	"github.com/jmzwcn/db"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -35,8 +36,8 @@ type AttendantsImpl struct {
 }
 
 func (s *AttendantsImpl) Add(ctx context.Context, in *pb.Attendant) (*pb.Attendant, error) {
-	in.Id = timestamppb.Now().String() //in.Telephone
-	in.Created = timestamppb.Now()     // timestamppb.Now()
+	in.Id = uuid.NewString()
+	in.Created = timestamppb.Now() // timestamppb.Now()
 	if err := db.Upsert(attendantTable, in.Id, in); err != nil {
 		return nil, err
 	}

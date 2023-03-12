@@ -8,6 +8,8 @@ github.com/golang/protobuf v1.5.2 h1:ROPKBNFfQgOUMifHyP+KYbvpjbdoFNs+aK7DXlji0Tw
 github.com/golang/protobuf v1.5.2/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/jmzwcn/db v0.0.0-20230126114235-877f1908e675 h1:XQ0u3LfGoYRVPJDrc0AAcB8A4gu0M52TGFnHV7TCsRA=
 github.com/jmzwcn/db v0.0.0-20230126114235-877f1908e675/go.mod h1:KVJAoyu/1ooOTzg64t7cisdCeNt8gF5CIbeTgBuR7sg=
 github.com/jmzwcn/db v0.0.0-20230225095758-bba2ef9d489e h1:Df91O7f2WJmPPbVQ7yZCg0Xcbf9w2FI1IsFMQqCKqJs=
