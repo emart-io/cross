@@ -10,13 +10,9 @@ github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/
 github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
 github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
 github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
-github.com/jmzwcn/db v0.0.0-20230126114235-877f1908e675 h1:XQ0u3LfGoYRVPJDrc0AAcB8A4gu0M52TGFnHV7TCsRA=
-github.com/jmzwcn/db v0.0.0-20230126114235-877f1908e675/go.mod h1:KVJAoyu/1ooOTzg64t7cisdCeNt8gF5CIbeTgBuR7sg=
 github.com/jmzwcn/db v0.0.0-20230225095758-bba2ef9d489e h1:Df91O7f2WJmPPbVQ7yZCg0Xcbf9w2FI1IsFMQqCKqJs=
 github.com/jmzwcn/db v0.0.0-20230225095758-bba2ef9d489e/go.mod h1:KVJAoyu/1ooOTzg64t7cisdCeNt8gF5CIbeTgBuR7sg=
 github.com/konsorten/go-windows-terminal-sequences v1.0.1/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
-github.com/mattn/go-sqlite3 v1.14.16 h1:yOQRA0RpS5PFz/oikGwBEqvAWhWg5ufRz4ETLjwpU1Y=
-github.com/mattn/go-sqlite3 v1.14.16/go.mod h1:2eHXhiwb8IkHr+BDWZGa96P6+rkvnG63S2DGjv9HUNg=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/sirupsen/logrus v1.4.2/go.mod h1:tLMulIdttU9McNUspp0xgXVQah82FyeX6MwdIuYE2rE=
