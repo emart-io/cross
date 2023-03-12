@@ -2,9 +2,8 @@ package service
 
 import (
 	"context"
-	"fmt"
-	"os"
 
+	_ "github.com/emart.io/cross/zwan/internal/impl/biz"
 	pb "github.com/emart.io/cross/zwan/service/go"
 	"github.com/google/uuid"
 	"github.com/jmzwcn/db"
@@ -15,21 +14,6 @@ import (
 const (
 	attendantTable = "attendants"
 )
-
-var (
-	mysqlServiceName = "mysql_emart"
-	mysqlServicePort = "3306"
-)
-
-func init() {
-	if msn, ok := os.LookupEnv("MYSQL_SERVICE_NAME"); ok {
-		mysqlServiceName = msn
-	}
-	if msp, ok := os.LookupEnv("MYSQL_SERVICE_PORT"); ok {
-		mysqlServicePort = msp
-	}
-	db.Open(fmt.Sprintf("root:123456@tcp(%s:%s)/emart", mysqlServiceName, mysqlServicePort))
-}
 
 type AttendantsImpl struct {
 	pb.UnimplementedAttendantsServer

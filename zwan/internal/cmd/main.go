@@ -23,7 +23,7 @@ func main() {
 	s := grpc.NewServer()
 	pb.RegisterAttendantsServer(s, &impl.AttendantsImpl{})
 	//pb.RegisterUsersServer(s, &impl.UsersImpl{})
-	//pb.RegisterOrdersServer(s, &impl.OrdersImpl{})
+	pb.RegisterOrdersServer(s, &impl.OrdersImpl{})
 	//pb.RegisterCouponsServer(s, &impl.CouponImpl{})
 	//pb.RegisterAccountsServer(s, &impl.AccountImpl{})
 	//pb.RegisterCommentsServer(s, &impl.CommentImpl{})

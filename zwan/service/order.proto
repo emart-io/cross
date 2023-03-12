@@ -19,7 +19,8 @@ message Order {
   string id = 1;
   string name = 2;
   int32 priority = 3;
-  google.protobuf.Timestamp created = 8;  
+  string location = 4;
+  google.protobuf.Timestamp created = 5; 
 }
 
 message OrderRequest {
