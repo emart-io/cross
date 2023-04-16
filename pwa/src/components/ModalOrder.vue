@@ -57,7 +57,7 @@ export default defineComponent({
                 alert('请输入名称')
                 return
             }
-            var att = new Order().setName(this.order.name);
+            var att = new Order().setName(this.order.name).setLocation(this.order.location);
             apiService.orderClient.add(att).catch(err => {
                 console.log(JSON.stringify(err));
             });
