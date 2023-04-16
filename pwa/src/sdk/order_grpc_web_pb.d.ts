@@ -17,7 +17,7 @@ export class OrdersClient {
   ): grpcWeb.ClientReadableStream<order_pb.Order>;
 
   get(
-    request: order_pb.OrderRequest,
+    request: order_pb.Order,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
                response: order_pb.Order) => void
@@ -36,7 +36,7 @@ export class OrdersClient {
   ): grpcWeb.ClientReadableStream<order_pb.Order>;
 
   delete(
-    request: order_pb.OrderRequest,
+    request: order_pb.Order,
     metadata: grpcWeb.Metadata | undefined,
     callback: (err: grpcWeb.RpcError,
                response: google_protobuf_empty_pb.Empty) => void
@@ -55,7 +55,7 @@ export class OrdersPromiseClient {
   ): Promise<order_pb.Order>;
 
   get(
-    request: order_pb.OrderRequest,
+    request: order_pb.Order,
     metadata?: grpcWeb.Metadata
   ): Promise<order_pb.Order>;
 
@@ -70,7 +70,7 @@ export class OrdersPromiseClient {
   ): grpcWeb.ClientReadableStream<order_pb.Order>;
 
   delete(
-    request: order_pb.OrderRequest,
+    request: order_pb.Order,
     metadata?: grpcWeb.Metadata
   ): Promise<google_protobuf_empty_pb.Empty>;
 
