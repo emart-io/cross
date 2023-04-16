@@ -27,7 +27,7 @@ func (s *OrdersImpl) Add(ctx context.Context, in *pb.Order) (*pb.Order, error) {
 	return in, nil
 }
 
-func (s *OrdersImpl) Get(ctx context.Context, in *pb.OrderRequest) (*pb.Order, error) {
+func (s *OrdersImpl) Get(ctx context.Context, in *pb.Order) (*pb.Order, error) {
 	order := pb.Order{}
 	if err := db.GetById(orderTable, in.Id, &order); err != nil {
 		return nil, err
@@ -54,7 +54,7 @@ func (s *OrdersImpl) List(in *pb.Order, stream pb.Orders_ListServer) error {
 	return nil
 }
 
-func (s *OrdersImpl) Delete(ctx context.Context, in *pb.OrderRequest) (*emptypb.Empty, error) {
+func (s *OrdersImpl) Delete(ctx context.Context, in *pb.Order) (*emptypb.Empty, error) {
 	if err := db.Delete(orderTable, in.Id); err != nil {
 		return nil, err
 	}

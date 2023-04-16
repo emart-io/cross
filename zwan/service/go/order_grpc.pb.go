@@ -20,10 +20,10 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OrdersClient interface {
 	Add(ctx context.Context, in *Order, opts ...grpc.CallOption) (*Order, error)
-	Get(ctx context.Context, in *OrderRequest, opts ...grpc.CallOption) (*Order, error)
+	Get(ctx context.Context, in *Order, opts ...grpc.CallOption) (*Order, error)
 	Update(ctx context.Context, in *Order, opts ...grpc.CallOption) (*Order, error)
 	List(ctx context.Context, in *Order, opts ...grpc.CallOption) (Orders_ListClient, error)
-	Delete(ctx context.Context, in *OrderRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	Delete(ctx context.Context, in *Order, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type ordersClient struct {
@@ -43,7 +43,7 @@ func (c *ordersClient) Add(ctx context.Context, in *Order, opts ...grpc.CallOpti
 	return out, nil
 }
 
-func (c *ordersClient) Get(ctx context.Context, in *OrderRequest, opts ...grpc.CallOption) (*Order, error) {
+func (c *ordersClient) Get(ctx context.Context, in *Order, opts ...grpc.CallOption) (*Order, error) {
 	out := new(Order)
 	err := c.cc.Invoke(ctx, "/zwan.Orders/Get", in, out, opts...)
 	if err != nil {
@@ -93,7 +93,7 @@ func (x *ordersListClient) Recv() (*Order, error) {
 	return m, nil
 }
 
-func (c *ordersClient) Delete(ctx context.Context, in *OrderRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *ordersClient) Delete(ctx context.Context, in *Order, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/zwan.Orders/Delete", in, out, opts...)
 	if err != nil {
@@ -107,10 +107,10 @@ func (c *ordersClient) Delete(ctx context.Context, in *OrderRequest, opts ...grp
 // for forward compatibility
 type OrdersServer interface {
 	Add(context.Context, *Order) (*Order, error)
-	Get(context.Context, *OrderRequest) (*Order, error)
+	Get(context.Context, *Order) (*Order, error)
 	Update(context.Context, *Order) (*Order, error)
 	List(*Order, Orders_ListServer) error
-	Delete(context.Context, *OrderRequest) (*emptypb.Empty, error)
+	Delete(context.Context, *Order) (*emptypb.Empty, error)
 	mustEmbedUnimplementedOrdersServer()
 }
 
@@ -121,7 +121,7 @@ type UnimplementedOrdersServer struct {
 func (UnimplementedOrdersServer) Add(context.Context, *Order) (*Order, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Add not implemented")
 }
-func (UnimplementedOrdersServer) Get(context.Context, *OrderRequest) (*Order, error) {
+func (UnimplementedOrdersServer) Get(context.Context, *Order) (*Order, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
 func (UnimplementedOrdersServer) Update(context.Context, *Order) (*Order, error) {
@@ -130,7 +130,7 @@ func (UnimplementedOrdersServer) Update(context.Context, *Order) (*Order, error)
 func (UnimplementedOrdersServer) List(*Order, Orders_ListServer) error {
 	return status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (UnimplementedOrdersServer) Delete(context.Context, *OrderRequest) (*emptypb.Empty, error) {
+func (UnimplementedOrdersServer) Delete(context.Context, *Order) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedOrdersServer) mustEmbedUnimplementedOrdersServer() {}
@@ -165,7 +165,7 @@ func _Orders_Add_Handler(srv interface{}, ctx context.Context, dec func(interfac
 }
 
 func _Orders_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OrderRequest)
+	in := new(Order)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -177,7 +177,7 @@ func _Orders_Get_Handler(srv interface{}, ctx context.Context, dec func(interfac
 		FullMethod: "/zwan.Orders/Get",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrdersServer).Get(ctx, req.(*OrderRequest))
+		return srv.(OrdersServer).Get(ctx, req.(*Order))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -222,7 +222,7 @@ func (x *ordersListServer) Send(m *Order) error {
 }
 
 func _Orders_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(OrderRequest)
+	in := new(Order)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -234,7 +234,7 @@ func _Orders_Delete_Handler(srv interface{}, ctx context.Context, dec func(inter
 		FullMethod: "/zwan.Orders/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrdersServer).Delete(ctx, req.(*OrderRequest))
+		return srv.(OrdersServer).Delete(ctx, req.(*Order))
 	}
 	return interceptor(ctx, in, info, handler)
 }

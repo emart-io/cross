@@ -40,21 +40,3 @@ export namespace Order {
   }
 }
 
-export class OrderRequest extends jspb.Message {
-  getId(): string;
-  setId(value: string): OrderRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): OrderRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: OrderRequest): OrderRequest.AsObject;
-  static serializeBinaryToWriter(message: OrderRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): OrderRequest;
-  static deserializeBinaryFromReader(message: OrderRequest, reader: jspb.BinaryReader): OrderRequest;
-}
-
-export namespace OrderRequest {
-  export type AsObject = {
-    id: string,
-  }
-}
-

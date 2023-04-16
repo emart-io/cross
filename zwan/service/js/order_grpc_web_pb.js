@@ -142,16 +142,16 @@ proto.zwan.OrdersPromiseClient.prototype.add =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zwan.OrderRequest,
+ *   !proto.zwan.Order,
  *   !proto.zwan.Order>}
  */
 const methodDescriptor_Orders_Get = new grpc.web.MethodDescriptor(
   '/zwan.Orders/Get',
   grpc.web.MethodType.UNARY,
-  proto.zwan.OrderRequest,
+  proto.zwan.Order,
   proto.zwan.Order,
   /**
-   * @param {!proto.zwan.OrderRequest} request
+   * @param {!proto.zwan.Order} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -162,7 +162,7 @@ const methodDescriptor_Orders_Get = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.zwan.OrderRequest} request The
+ * @param {!proto.zwan.Order} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -183,7 +183,7 @@ proto.zwan.OrdersClient.prototype.get =
 
 
 /**
- * @param {!proto.zwan.OrderRequest} request The
+ * @param {!proto.zwan.Order} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
@@ -320,16 +320,16 @@ proto.zwan.OrdersPromiseClient.prototype.list =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.zwan.OrderRequest,
+ *   !proto.zwan.Order,
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Orders_Delete = new grpc.web.MethodDescriptor(
   '/zwan.Orders/Delete',
   grpc.web.MethodType.UNARY,
-  proto.zwan.OrderRequest,
+  proto.zwan.Order,
   google_protobuf_empty_pb.Empty,
   /**
-   * @param {!proto.zwan.OrderRequest} request
+   * @param {!proto.zwan.Order} request
    * @return {!Uint8Array}
    */
   function(request) {
@@ -340,7 +340,7 @@ const methodDescriptor_Orders_Delete = new grpc.web.MethodDescriptor(
 
 
 /**
- * @param {!proto.zwan.OrderRequest} request The
+ * @param {!proto.zwan.Order} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -361,7 +361,7 @@ proto.zwan.OrdersClient.prototype.delete =
 
 
 /**
- * @param {!proto.zwan.OrderRequest} request The
+ * @param {!proto.zwan.Order} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata

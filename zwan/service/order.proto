@@ -9,10 +9,10 @@
 
 service Orders {
   rpc Add (Order) returns (Order) {}
-  rpc Get (OrderRequest) returns (Order) {}
+  rpc Get (Order) returns (Order) {}
   rpc Update (Order) returns (Order) {}
   rpc List (Order) returns (stream Order) {}
-  rpc Delete (OrderRequest) returns (google.protobuf.Empty) {}
+  rpc Delete (Order) returns (google.protobuf.Empty) {}
 }
 
 message Order {
@@ -21,8 +21,4 @@ message Order {
   int32 priority = 3;
   string location = 4;
   google.protobuf.Timestamp created = 5; 
-}
-
-message OrderRequest {
-  string id = 1;
 }
