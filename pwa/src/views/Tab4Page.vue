@@ -46,6 +46,7 @@
         <ion-icon slot="end" name="star"></ion-icon>
       </ion-button> -->
       <p>{{ message }}</p>
+      <vue-qrcode value="Hello, World!" :options="{ width: 160 }"></vue-qrcode>
     </ion-content>
   </ion-page>
 </template>
@@ -56,10 +57,11 @@ import { IonPage, /*IonHeader, IonToolbar, IonTitle,*/ IonContent, modalControll
 import { caretForwardOutline } from 'ionicons/icons';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import ModalAttendant from '@/components/ModalAttendant.vue';
+import VueQrcode from '@chenfengyuan/vue-qrcode';
 
 export default defineComponent({
   name: 'Tab4Page',
-  components: { /*ExploreContainer,*/ /*IonHeader, IonToolbar, IonTitle,*/ IonContent, IonPage, /*IonButton,*/ IonItem, IonLabel, IonThumbnail },
+  components: { /*ExploreContainer,*/ /*IonHeader, IonToolbar, IonTitle,*/ IonContent, IonPage, /*IonButton,*/ IonItem, IonLabel, IonThumbnail, VueQrcode, },
   data() {
     return {
       message: '',
@@ -89,5 +91,11 @@ export default defineComponent({
 ion-thumbnail {
   --size: 300px;
   --border-radius: 30px;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  border: 0px solid red;
 }
 </style>
