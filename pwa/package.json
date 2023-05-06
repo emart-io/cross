@@ -23,10 +23,9 @@
     "google-protobuf": "^3.21.2",
     "grpc-web": "^1.4.2",
     "ionicons": "^6.0.3",
-    "qrcode": "^1.5.3",
+    "qrcode.vue": "^3.4.0",
     "swiper": "^9.0.4",
     "vue": "^3.2.47",
-    "vue-qrcode": "^2.2.0",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
