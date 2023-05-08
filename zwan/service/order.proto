@@ -20,5 +20,6 @@ message Order {
   string name = 2;
   int32 priority = 3;
   string location = 4;
+  string description = 6;
   google.protobuf.Timestamp created = 5; 
 }
