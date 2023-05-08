@@ -76,6 +76,7 @@ proto.zwan.Order.toObject = function(includeInstance, msg) {
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     priority: jspb.Message.getFieldWithDefault(msg, 3, 0),
     location: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 6, ""),
     created: (f = msg.getCreated()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
@@ -128,6 +129,10 @@ proto.zwan.Order.deserializeBinaryFromReader = function(msg, reader) {
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setLocation(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
       break;
     case 5:
       var value = new google_protobuf_timestamp_pb.Timestamp;
@@ -188,6 +193,13 @@ proto.zwan.Order.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -271,6 +283,24 @@ proto.zwan.Order.prototype.getLocation = function() {
  */
 proto.zwan.Order.prototype.setLocation = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string description = 6;
+ * @return {string}
+ */
+proto.zwan.Order.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.zwan.Order} returns this
+ */
+proto.zwan.Order.prototype.setDescription = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 

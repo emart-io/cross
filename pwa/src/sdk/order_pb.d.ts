@@ -17,6 +17,9 @@ export class Order extends jspb.Message {
   getLocation(): string;
   setLocation(value: string): Order;
 
+  getDescription(): string;
+  setDescription(value: string): Order;
+
   getCreated(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setCreated(value?: google_protobuf_timestamp_pb.Timestamp): Order;
   hasCreated(): boolean;
@@ -36,6 +39,7 @@ export namespace Order {
     name: string,
     priority: number,
     location: string,
+    description: string,
     created?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }

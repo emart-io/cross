@@ -13,11 +13,15 @@
     <ion-content class="ion-padding">
         <ion-item>
             <ion-label>名称：</ion-label>
-            <ion-input v-model="order.name" placeholder="请输入订单名"></ion-input>
+            <ion-input v-model="order.name" placeholder="请输入订单名" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>地点：</ion-label>
-            <ion-input v-model="order.location" placeholder="请输入订单医院"></ion-input>
+            <ion-input v-model="order.location" placeholder="请输入订单医院" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>描述：</ion-label>
+            <ion-textarea v-model="order.description" placeholder="请输入订单描述(可选)" :rows="lines"></ion-textarea>
         </ion-item>
     </ion-content>
 </template>
@@ -33,6 +37,7 @@ import {
     IonItem,
     IonLabel,
     IonInput,
+    IonTextarea,
     modalController,
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
@@ -41,11 +46,12 @@ import { Order } from '../sdk/order_pb';
 
 export default defineComponent({
     name: 'ModalOrder',
-    components: { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonItem, IonLabel, IonInput },
+    components: { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonItem, IonLabel, IonInput, IonTextarea },
     data() {
+        var lines = 3;
         var order = new Order().toObject();
         return {
-            order
+            order, lines,
         }
     },
     methods: {
@@ -57,7 +63,7 @@ export default defineComponent({
                 alert('请输入名称')
                 return
             }
-            var att = new Order().setName(this.order.name).setLocation(this.order.location);
+            var att = new Order().setName(this.order.name).setLocation(this.order.location).setDescription(this.order.description);
             apiService.orderClient.add(att).catch(err => {
                 console.log(JSON.stringify(err));
             });
