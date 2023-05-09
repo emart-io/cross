@@ -17,11 +17,11 @@
         </ion-item>
         <ion-item>
             <ion-label>地点：</ion-label>
-            <ion-input v-model="order.location" placeholder="请输入订单医院" required></ion-input>
+            <ion-input v-model="order.location" placeholder="请输入医院名称" required></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>描述：</ion-label>
-            <ion-textarea v-model="order.description" placeholder="请输入订单描述(可选)" :rows="lines"></ion-textarea>
+            <ion-label>附加信息：</ion-label>
+            <ion-textarea v-model="order.description" placeholder="可选" :rows="lines"></ion-textarea>
         </ion-item>
     </ion-content>
 </template>
@@ -48,7 +48,7 @@ export default defineComponent({
     name: 'ModalOrder',
     components: { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonItem, IonLabel, IonInput, IonTextarea },
     data() {
-        var lines = 3;
+        var lines = 2;
         var order = new Order().toObject();
         return {
             order, lines,
@@ -63,7 +63,8 @@ export default defineComponent({
                 alert('请输入名称')
                 return
             }
-            var att = new Order().setName(this.order.name).setLocation(this.order.location).setDescription(this.order.description);
+            var att = new Order().setName(this.order.name).setLocation(this.order.location);
+            att.setDescription(this.order.description);
             apiService.orderClient.add(att).catch(err => {
                 console.log(JSON.stringify(err));
             });
