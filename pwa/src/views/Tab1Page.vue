@@ -78,6 +78,7 @@ import { location } from 'ionicons/icons';
 import AMapLoader from '@amap/amap-jsapi-loader';
 import { Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { apiService } from '../api.service';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -131,6 +132,7 @@ export default defineComponent({
           // 查询成功时，result即对应匹配的POI信息
           console.log(JSON.stringify(result));
           this.$data.hospitals = result.poiList.pois;
+          apiService.hospitals = this.$data.hospitals;
         });
       }).catch((e) => {
         console.log(e)

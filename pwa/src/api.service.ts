@@ -17,7 +17,7 @@ export class ApiService {
     // memoClient = new MemosPromiseClient(environment.apiUrl);
 
     //constructor() { }
-
+    hospitals:any[]=[];
 }
 
 export const apiService = new ApiService();

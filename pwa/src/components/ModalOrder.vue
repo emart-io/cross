@@ -16,9 +16,9 @@
             <ion-label>就诊医院</ion-label>
             <!-- <ion-input v-model="order.location" placeholder="请输入医院名称" required></ion-input> -->
             <ion-select mode="ios" aria-label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院">
-                <ion-select-option value="apples">Apples</ion-select-option>
-                <ion-select-option value="oranges">Oranges</ion-select-option>
-                <ion-select-option value="bananas">Bananas</ion-select-option>
+                <ion-select-option v-for="item in hospitals" :value="item['name']" :key="item['id']">{{ item['name']
+                }}</ion-select-option>
+                <!-- <ion-select-option value="oranges">Oranges</ion-select-option> -->
             </ion-select>
         </ion-item>
         <ion-item>
@@ -27,7 +27,10 @@
         </ion-item>
         <ion-item>
             <ion-label>就诊时间</ion-label>
-            <ion-input slot="end" v-model="order.name" placeholder="请选择就诊时间" required></ion-input>
+            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+            <ion-modal :keep-contents-mounted="true">
+                <ion-datetime id="datetime"></ion-datetime>
+            </ion-modal>
         </ion-item>
         <ion-item>
             <ion-label>就诊人</ion-label>
@@ -54,6 +57,7 @@ import {
     IonTextarea,
     IonSelect,
     IonSelectOption,
+    IonDatetime, IonDatetimeButton, IonModal,
     modalController,
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
@@ -62,12 +66,17 @@ import { Order } from '../sdk/order_pb';
 
 export default defineComponent({
     name: 'ModalOrder',
-    components: { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonItem, IonLabel, IonInput, IonTextarea, IonSelect, IonSelectOption },
+    components: {
+        IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonItem, IonLabel, IonInput, IonTextarea,
+        IonSelect, IonSelectOption,
+        IonDatetime, IonDatetimeButton, IonModal,
+    },
     data() {
         var lines = 2;
         var order = new Order().toObject();
+        var hospitals = apiService.hospitals;
         return {
-            order, lines,
+            order, lines, hospitals,
         }
     },
     methods: {
