@@ -8,17 +8,25 @@ export class Order extends jspb.Message {
   getId(): string;
   setId(value: string): Order;
 
-  getName(): string;
-  setName(value: string): Order;
+  getHospital(): string;
+  setHospital(value: string): Order;
 
-  getPriority(): number;
-  setPriority(value: number): Order;
+  getDepartment(): string;
+  setDepartment(value: string): Order;
 
-  getLocation(): string;
-  setLocation(value: string): Order;
+  getTargetTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTargetTime(value?: google_protobuf_timestamp_pb.Timestamp): Order;
+  hasTargetTime(): boolean;
+  clearTargetTime(): Order;
 
-  getDescription(): string;
-  setDescription(value: string): Order;
+  getPatient(): string;
+  setPatient(value: string): Order;
+
+  getCompanion(): string;
+  setCompanion(value: string): Order;
+
+  getNotes(): string;
+  setNotes(value: string): Order;
 
   getCreated(): google_protobuf_timestamp_pb.Timestamp | undefined;
   setCreated(value?: google_protobuf_timestamp_pb.Timestamp): Order;
@@ -36,10 +44,12 @@ export class Order extends jspb.Message {
 export namespace Order {
   export type AsObject = {
     id: string,
-    name: string,
-    priority: number,
-    location: string,
-    description: string,
+    hospital: string,
+    department: string,
+    targetTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    patient: string,
+    companion: string,
+    notes: string,
     created?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }

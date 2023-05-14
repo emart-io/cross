@@ -17,9 +17,11 @@ service Orders {
 
 message Order {
   string id = 1;
-  string name = 2;
-  int32 priority = 3;
-  string location = 4;
-  string description = 6;
-  google.protobuf.Timestamp created = 5; 
+  string hospital = 2;
+  string department = 3;
+  google.protobuf.Timestamp target_time = 4;
+  string patient = 5;
+  string companion = 6;
+  string notes = 7;
+  google.protobuf.Timestamp created = 8;
 }

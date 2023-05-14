@@ -14,8 +14,7 @@
     <ion-content>
         <ion-item>
             <ion-label>就诊医院</ion-label>
-            <!-- <ion-input v-model="order.location" placeholder="请输入医院名称" required></ion-input> -->
-            <ion-select mode="ios" aria-label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院">
+            <ion-select mode="ios" interface="action-sheet" placeholder="请选择就诊医院" required>
                 <ion-select-option v-for="item in hospitals" :value="item['name']" :key="item['id']">{{ item['name']
                 }}</ion-select-option>
                 <!-- <ion-select-option value="oranges">Oranges</ion-select-option> -->
@@ -23,7 +22,7 @@
         </ion-item>
         <ion-item>
             <ion-label>就诊科室</ion-label>
-            <ion-input slot="end" v-model="order.name" placeholder="请输入就诊科室" required></ion-input>
+            <ion-input slot="end" v-model="order.department" placeholder="请输入就诊科室" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>就诊时间</ion-label>
@@ -34,11 +33,11 @@
         </ion-item>
         <ion-item>
             <ion-label>就诊人</ion-label>
-            <ion-input slot="end" v-model="order.name" placeholder="请选择就诊人" required></ion-input>
+            <ion-input slot="end" v-model="order.patient" placeholder="请选择就诊人" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>备注</ion-label>
-            <ion-textarea slot="end" v-model="order.description" :rows="lines"></ion-textarea>
+            <ion-textarea slot="end" v-model="order.notes" :rows="lines"></ion-textarea>
         </ion-item>
     </ion-content>
 </template>
@@ -84,16 +83,16 @@ export default defineComponent({
             return modalController.dismiss(null, 'cancel');
         },
         confirm() {
-            if (this.order.name == '') {
-                alert('请输入名称')
+            if (this.order.hospital == '') {
+                alert('请选择医院')
                 return
             }
-            var att = new Order().setName(this.order.name).setLocation(this.order.location);
-            att.setDescription(this.order.description);
+            var att = new Order().setHospital(this.order.hospital).setDepartment(this.order.department);
+            att.setNotes(this.order.notes);
             apiService.orderClient.add(att).catch(err => {
                 console.log(JSON.stringify(err));
             });
-            return modalController.dismiss(this.order.name, 'confirm');
+            return modalController.dismiss(this.order.hospital, 'confirm');
         },
     },
 });
