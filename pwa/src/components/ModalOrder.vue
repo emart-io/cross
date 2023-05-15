@@ -14,7 +14,7 @@
     <ion-content>
         <ion-item>
             <ion-label>就诊医院</ion-label>
-            <ion-select mode="ios" interface="action-sheet" placeholder="请选择就诊医院" required>
+            <ion-select mode="ios" interface="action-sheet" placeholder="请选择就诊医院" v-model="order.hospital" required>
                 <ion-select-option v-for="item in hospitals" :value="item['name']" :key="item['id']">{{ item['name']
                 }}</ion-select-option>
                 <!-- <ion-select-option value="oranges">Oranges</ion-select-option> -->
@@ -33,7 +33,7 @@
         </ion-item>
         <ion-item>
             <ion-label>就诊人</ion-label>
-            <ion-input slot="end" v-model="order.patient" placeholder="请选择就诊人" required></ion-input>
+            <ion-input slot="end" v-model="order.patient" placeholder="请输入就诊人" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>备注</ion-label>
@@ -83,8 +83,9 @@ export default defineComponent({
             return modalController.dismiss(null, 'cancel');
         },
         confirm() {
-            if (this.order.hospital == '') {
-                alert('请选择医院')
+            console.log(this.order);
+            if (this.order.hospital == '' || this.order.department == '') {
+                alert('请选择医院与科室')
                 return
             }
             var att = new Order().setHospital(this.order.hospital).setDepartment(this.order.department);
