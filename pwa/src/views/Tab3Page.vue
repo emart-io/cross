@@ -49,9 +49,9 @@
           <img alt="Silhouette of a person's head" src="assets/pz-ser-banner.jpg" />
         </ion-avatar>
         <ion-label>
-          <h3>{{ item.name }}</h3>
+          <h3>{{ item.hospital }}</h3>
           <p>时间60|人气50</p>
-          <p>地点：{{ item.location }}</p>
+          <p>地点：{{ item.department }}</p>
         </ion-label>
         <ion-button>接单</ion-button>
       </ion-item>
