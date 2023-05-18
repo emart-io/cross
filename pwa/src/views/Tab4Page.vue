@@ -91,7 +91,7 @@ export default defineComponent({
 </script>
 <style>
 ion-thumbnail {
-  --size: 300px;
+  --size: 70px;
   --border-radius: 30px;
 }
 
