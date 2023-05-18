@@ -4,7 +4,7 @@
             <ion-buttons slot="start">
                 <ion-button color="medium" @click="cancel">取消</ion-button>
             </ion-buttons>
-            <ion-title>陪诊服务下单</ion-title>
+            <ion-title>服务下单</ion-title>
             <ion-buttons slot="end">
                 <ion-button @click="confirm">确定</ion-button>
             </ion-buttons>
@@ -13,8 +13,8 @@
     <!-- <ion-content class="ion-padding"> -->
     <ion-content>
         <ion-item>
-            <ion-label>就诊医院</ion-label>
-            <ion-select mode="ios" interface="action-sheet" placeholder="请选择就诊医院" v-model="order.hospital" required>
+            <ion-select mode="ios" label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院" v-model="order.hospital"
+                required>
                 <ion-select-option v-for="item in hospitals" :value="item['name']" :key="item['id']">{{ item['name']
                 }}</ion-select-option>
                 <!-- <ion-select-option value="oranges">Oranges</ion-select-option> -->
@@ -26,7 +26,7 @@
         </ion-item>
         <ion-item>
             <ion-label>就诊时间</ion-label>
-            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+            <ion-datetime-button datetime="datetime" :show-default-buttons="true"></ion-datetime-button>
             <ion-modal :keep-contents-mounted="true">
                 <ion-datetime id="datetime"></ion-datetime>
             </ion-modal>
