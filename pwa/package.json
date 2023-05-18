@@ -16,7 +16,6 @@
     "@capacitor/haptics": "4.1.0",
     "@capacitor/keyboard": "4.1.0",
     "@capacitor/status-bar": "4.1.1",
-    "@ionic/core": "^7.0.7",
     "@ionic/vue": "^7.0.7",
     "@ionic/vue-router": "^7.0.7",
     "@types/google-protobuf": "^3.15.6",
