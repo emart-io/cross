@@ -3,7 +3,7 @@ IMG_HUB?=docker.io/jmzwcn
 TAG?=${shell date "+%Y%m%d-%H%M"}
 
 clean:
-	rm -rf dist
+#	rm -rf dist
 #	-cp resources/sign/* platforms/android
 
 build:clean

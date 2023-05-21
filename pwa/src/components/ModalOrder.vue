@@ -1,6 +1,6 @@
 <template>
     <ion-header>
-        <ion-toolbar>
+        <ion-toolbar mode="ios">
             <ion-buttons slot="start">
                 <ion-button color="medium" @click="cancel">取消</ion-button>
             </ion-buttons>
@@ -10,7 +10,6 @@
             </ion-buttons>
         </ion-toolbar>
     </ion-header>
-    <!-- <ion-content class="ion-padding"> -->
     <ion-content>
         <ion-item>
             <ion-select mode="ios" label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院" v-model="order.hospital"

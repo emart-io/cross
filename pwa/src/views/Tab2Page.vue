@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>陪诊人员</ion-title>
+        <ion-title>陪诊师</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">

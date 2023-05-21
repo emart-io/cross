@@ -1,10 +1,10 @@
 <template>
     <ion-header>
-        <ion-toolbar>
+        <ion-toolbar mode="ios">
             <ion-buttons slot="start">
                 <ion-button color="medium" @click="cancel">取消</ion-button>
             </ion-buttons>
-            <ion-title>陪诊员入驻</ion-title>
+            <ion-title>陪诊师入驻</ion-title>
             <ion-buttons slot="end">
                 <ion-button @click="confirm">确定</ion-button>
             </ion-buttons>
