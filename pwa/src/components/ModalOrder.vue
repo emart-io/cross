@@ -12,6 +12,13 @@
     </ion-header>
     <ion-content>
         <ion-item>
+            <ion-select mode="ios" label="陪诊方式" interface="popover" placeholder="请选择陪诊方式" v-model="order.type"
+                required>
+                <ion-select-option value="全天">全天陪诊</ion-select-option>
+                <ion-select-option value="半天">半天陪诊</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
             <ion-select mode="ios" label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院" v-model="order.hospital"
                 required>
                 <ion-select-option v-for="item in hospitals" :value="item['name']" :key="item['id']">{{ item['name']
@@ -36,7 +43,7 @@
         </ion-item>
         <ion-item>
             <ion-label>备注</ion-label>
-            <ion-textarea slot="end" v-model="order.notes" :rows="lines"></ion-textarea>
+            <ion-textarea slot="end" v-model="order.notes" :rows="lines" placeholder="添加就诊注意事项"></ion-textarea>
         </ion-item>
     </ion-content>
 </template>

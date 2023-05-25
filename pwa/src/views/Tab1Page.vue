@@ -35,7 +35,7 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-card>
+            <ion-card @click="openModal">
               <img alt="Silhouette of mountains" src="assets/peizhen4.png" />
               <ion-card-header>
                 <ion-card-title>就医陪诊</ion-card-title>
@@ -72,13 +72,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, IonList, IonLabel, IonContent, IonCard, /*IonCardContent,*/ IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow, IonItem, IonThumbnail } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, IonList, IonLabel, IonContent, IonCard, /*IonCardContent,*/ IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow, IonItem, IonThumbnail,modalController } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { location } from 'ionicons/icons';
 import AMapLoader from '@amap/amap-jsapi-loader';
 import { Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { apiService } from '../api.service';
+import ModalOrder from '@/components/ModalOrder.vue';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -137,6 +138,17 @@ export default defineComponent({
       }).catch((e) => {
         console.log(e)
       })
+    },
+    async openModal() {
+      const modal = await modalController.create({
+        component: ModalOrder,
+      });
+      modal.present();
+
+      const { data, role } = await modal.onWillDismiss();
+      if (role === 'confirm') {
+        //this.message = `Hello, ${data}!`;
+      }
     },
   },
   setup() {

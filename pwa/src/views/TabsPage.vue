@@ -10,7 +10,7 @@
 
         <ion-tab-button tab="tab2" href="/tabs/tab2">
           <ion-icon :icon="ellipse" />
-          <ion-label>陪诊师</ion-label>
+          <ion-label>陪诊员</ion-label>
         </ion-tab-button>
 
         <ion-tab-button tab="tab3" href="/tabs/tab3">

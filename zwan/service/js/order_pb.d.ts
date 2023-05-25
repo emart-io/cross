@@ -8,6 +8,9 @@ export class Order extends jspb.Message {
   getId(): string;
   setId(value: string): Order;
 
+  getType(): string;
+  setType(value: string): Order;
+
   getHospital(): string;
   setHospital(value: string): Order;
 
@@ -24,6 +27,9 @@ export class Order extends jspb.Message {
 
   getCompanion(): string;
   setCompanion(value: string): Order;
+
+  getFee(): number;
+  setFee(value: number): Order;
 
   getNotes(): string;
   setNotes(value: string): Order;
@@ -44,11 +50,13 @@ export class Order extends jspb.Message {
 export namespace Order {
   export type AsObject = {
     id: string,
+    type: string,
     hospital: string,
     department: string,
     targetTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     patient: string,
     companion: string,
+    fee: number,
     notes: string,
     created?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
