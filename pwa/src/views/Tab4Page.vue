@@ -46,9 +46,10 @@
         <ion-icon slot="end" name="star"></ion-icon>
       </ion-button> -->
       <p>{{ message }}</p>
-      <br /> <br /> <br /> <br />
-      <!-- https://github.com/scopewu/qrcode.vue -->
-      <qrcode-vue class="qr-code" value="http://iyou.city/" />
+      <ion-fab slot="fixed" vertical="bottom" horizontal="center">
+        <!-- https://github.com/scopewu/qrcode.vue -->
+        <qrcode-vue style="margin-bottom: 30px;" value="http://iyou.city/" />
+      </ion-fab>
     </ion-content>
   </ion-page>
 </template>
@@ -93,10 +94,5 @@ export default defineComponent({
 ion-thumbnail {
   --size: 60px;
   --border-radius: 30px;
-}
-
-.qr-code {
-  display: block;
-  margin: 0 auto;
 }
 </style>
