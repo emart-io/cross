@@ -1,50 +1,65 @@
 <template>
     <ion-header>
-        <ion-toolbar mode="ios">
-            <ion-buttons slot="start">
-                <ion-button color="medium" @click="cancel">取消</ion-button>
-            </ion-buttons>
+        <ion-toolbar>
             <ion-title>服务下单</ion-title>
-            <ion-buttons slot="end">
-                <ion-button @click="confirm">确定</ion-button>
-            </ion-buttons>
         </ion-toolbar>
     </ion-header>
     <ion-content>
-        <ion-item>
-            <ion-select mode="ios" label="陪诊方式" interface="popover" placeholder="请选择陪诊方式" v-model="order.type"
-                required>
-                <ion-select-option value="全天">全天陪诊</ion-select-option>
-                <ion-select-option value="半天">半天陪诊</ion-select-option>
-            </ion-select>
-        </ion-item>
-        <ion-item>
-            <ion-select mode="ios" label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院" v-model="order.hospital"
-                required>
-                <ion-select-option v-for="item in hospitals" :value="item['name']" :key="item['id']">{{ item['name']
-                }}</ion-select-option>
-                <!-- <ion-select-option value="oranges">Oranges</ion-select-option> -->
-            </ion-select>
-        </ion-item>
-        <ion-item>
-            <ion-label>就诊科室</ion-label>
-            <ion-input slot="end" v-model="order.department" placeholder="请输入就诊科室" required></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>就诊时间</ion-label>
-            <ion-datetime-button datetime="datetime" :show-default-buttons="true"></ion-datetime-button>
-            <ion-modal :keep-contents-mounted="true">
-                <ion-datetime id="datetime"></ion-datetime>
-            </ion-modal>
-        </ion-item>
-        <ion-item>
-            <ion-label>就诊人</ion-label>
-            <ion-input slot="end" v-model="order.patient" placeholder="请输入就诊人" required></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>备注</ion-label>
-            <ion-textarea slot="end" v-model="order.notes" :rows="lines" placeholder="添加就诊注意事项"></ion-textarea>
-        </ion-item>
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title></ion-card-title>
+                <ion-card-subtitle>陪诊方式</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-item>
+                    <ion-select interface="popover" placeholder="请选择陪诊方式" v-model="order.type" required>
+                        <ion-select-option value="全天">全天陪诊</ion-select-option>
+                        <ion-select-option value="半天">半天陪诊</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-card-content>
+            <ion-card-header>
+                <ion-card-title></ion-card-title>
+                <ion-card-subtitle>就诊信息</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-item>
+                    <ion-select mode="ios" label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院"
+                        v-model="order.hospital" required>
+                        <ion-select-option v-for="item in hospitals" :value="item['name']" :key="item['id']">{{ item['name']
+                        }}</ion-select-option>
+                        <!-- <ion-select-option value="oranges">Oranges</ion-select-option> -->
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label>就诊科室</ion-label>
+                    <ion-input slot="end" v-model="order.department" placeholder="请输入就诊科室" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>就诊时间</ion-label>
+                    <ion-datetime-button datetime="datetime" :show-default-buttons="true"></ion-datetime-button>
+                    <ion-modal :keep-contents-mounted="true">
+                        <ion-datetime id="datetime"></ion-datetime>
+                    </ion-modal>
+                </ion-item>
+                <ion-item>
+                    <ion-label>就诊人</ion-label>
+                    <ion-input slot="end" v-model="order.patient" placeholder="请输入就诊人" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>备注</ion-label>
+                    <ion-textarea slot="end" v-model="order.notes" :rows="lines" placeholder="添加就诊注意事项"></ion-textarea>
+                </ion-item>
+            </ion-card-content>
+            <ion-toolbar>
+                <ion-buttons slot="start">
+                    <ion-button color="medium" @click="cancel">取消</ion-button>
+                </ion-buttons>
+                <ion-buttons slot="end">
+                    <ion-button @click="confirm">确定</ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-card>
     </ion-content>
 </template>
   
