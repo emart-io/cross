@@ -48,7 +48,7 @@
       <p>{{ message }}</p>
       <ion-fab slot="fixed" vertical="bottom" horizontal="center">
         <!-- https://github.com/scopewu/qrcode.vue -->
-        <qrcode-vue style="margin-bottom: 30px;" value="http://iyou.city/" />
+        <qrcode-vue style="margin: 0 0 50px -20px;" value="http://iyou.city/" />
       </ion-fab>
     </ion-content>
   </ion-page>
@@ -56,7 +56,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonPage, /*IonHeader, IonToolbar, IonTitle,*/ IonContent, modalController, /*IonButton,*/ IonItem, IonLabel, IonThumbnail } from '@ionic/vue';
+import { IonPage, /*IonHeader, IonToolbar, IonTitle,*/ IonContent, modalController, /*IonButton,*/ IonItem, IonLabel, IonThumbnail, IonFab } from '@ionic/vue';
 import { caretForwardOutline } from 'ionicons/icons';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import ModalAttendant from '@/components/ModalAttendant.vue';
@@ -64,7 +64,7 @@ import QrcodeVue from 'qrcode.vue'
 
 export default defineComponent({
   name: 'Tab4Page',
-  components: { /*ExploreContainer,*/ /*IonHeader, IonToolbar, IonTitle,*/ IonContent, IonPage, /*IonButton,*/ IonItem, IonLabel, IonThumbnail, QrcodeVue, },
+  components: { /*ExploreContainer,*/ /*IonHeader, IonToolbar, IonTitle,*/ IonContent, IonPage, /*IonButton,*/ IonItem, IonLabel, IonThumbnail, QrcodeVue, IonFab },
   data() {
     return {
       message: '',

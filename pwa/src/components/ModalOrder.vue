@@ -24,7 +24,7 @@
             </ion-card-header>
             <ion-card-content>
                 <ion-item>
-                    <ion-select mode="ios" label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院"
+                    <ion-select label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院"
                         v-model="order.hospital" required>
                         <ion-select-option v-for="item in hospitals" :value="item['name']" :key="item['id']">{{ item['name']
                         }}</ion-select-option>
@@ -32,8 +32,7 @@
                     </ion-select>
                 </ion-item>
                 <ion-item>
-                    <ion-label>就诊科室</ion-label>
-                    <ion-input slot="end" v-model="order.department" placeholder="请输入就诊科室" required></ion-input>
+                    <ion-input label="就诊科室" v-model="order.department" placeholder="请输入就诊科室" required></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label>就诊时间</ion-label>
@@ -43,12 +42,10 @@
                     </ion-modal>
                 </ion-item>
                 <ion-item>
-                    <ion-label>就诊人</ion-label>
-                    <ion-input slot="end" v-model="order.patient" placeholder="请输入就诊人" required></ion-input>
+                    <ion-input label="就诊人" v-model="order.patient" placeholder="请输入就诊人" required></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-label>备注</ion-label>
-                    <ion-textarea slot="end" v-model="order.notes" :rows="lines" placeholder="添加就诊注意事项"></ion-textarea>
+                    <ion-textarea label="备注" v-model="order.notes" :rows="lines" placeholder="添加就诊注意事项"></ion-textarea>
                 </ion-item>
             </ion-card-content>
             <ion-toolbar>
@@ -79,6 +76,7 @@ import {
     IonSelectOption,
     IonDatetime, IonDatetimeButton, IonModal,
     modalController,
+    IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle
 } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { apiService } from '../api.service';
@@ -90,6 +88,7 @@ export default defineComponent({
         IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonItem, IonLabel, IonInput, IonTextarea,
         IonSelect, IonSelectOption,
         IonDatetime, IonDatetimeButton, IonModal,
+        IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle
     },
     data() {
         var lines = 2;
