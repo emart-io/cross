@@ -15,6 +15,7 @@
                     <ion-select interface="popover" placeholder="请选择陪诊方式" v-model="order.type" required>
                         <ion-select-option value="全天">全天陪诊</ion-select-option>
                         <ion-select-option value="半天">半天陪诊</ion-select-option>
+                        <ion-select-option value="取送结果">取送结果</ion-select-option>
                     </ion-select>
                 </ion-item>
             </ion-card-content>
@@ -24,8 +25,8 @@
             </ion-card-header>
             <ion-card-content>
                 <ion-item>
-                    <ion-select label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院"
-                        v-model="order.hospital" required>
+                    <ion-select label="就诊医院" interface="action-sheet" placeholder="请选择就诊医院" v-model="order.hospital"
+                        required>
                         <ion-select-option v-for="item in hospitals" :value="item['name']" :key="item['id']">{{ item['name']
                         }}</ion-select-option>
                         <!-- <ion-select-option value="oranges">Oranges</ion-select-option> -->
