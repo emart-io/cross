@@ -24,6 +24,7 @@ message Order {
   string patient = 6;
   string companion = 7;
   uint32 fee = 8;
-  string notes = 9;
-  google.protobuf.Timestamp created = 10;
+  string status = 9;
+  string notes = 10;
+  google.protobuf.Timestamp created = 11;
 }

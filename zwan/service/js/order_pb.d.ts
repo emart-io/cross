@@ -31,6 +31,9 @@ export class Order extends jspb.Message {
   getFee(): number;
   setFee(value: number): Order;
 
+  getStatus(): string;
+  setStatus(value: string): Order;
+
   getNotes(): string;
   setNotes(value: string): Order;
 
@@ -57,6 +60,7 @@ export namespace Order {
     patient: string,
     companion: string,
     fee: number,
+    status: string,
     notes: string,
     created?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }

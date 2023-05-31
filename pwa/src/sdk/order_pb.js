@@ -80,7 +80,8 @@ proto.zwan.Order.toObject = function(includeInstance, msg) {
     patient: jspb.Message.getFieldWithDefault(msg, 6, ""),
     companion: jspb.Message.getFieldWithDefault(msg, 7, ""),
     fee: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    notes: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    status: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    notes: jspb.Message.getFieldWithDefault(msg, 10, ""),
     created: (f = msg.getCreated()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
@@ -153,9 +154,13 @@ proto.zwan.Order.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 9:
       var value = /** @type {string} */ (reader.readString());
-      msg.setNotes(value);
+      msg.setStatus(value);
       break;
     case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNotes(value);
+      break;
+    case 11:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setCreated(value);
@@ -246,17 +251,24 @@ proto.zwan.Order.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getNotes();
+  f = message.getStatus();
   if (f.length > 0) {
     writer.writeString(
       9,
       f
     );
   }
+  f = message.getNotes();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
   f = message.getCreated();
   if (f != null) {
     writer.writeMessage(
-      10,
+      11,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -428,10 +440,10 @@ proto.zwan.Order.prototype.setFee = function(value) {
 
 
 /**
- * optional string notes = 9;
+ * optional string status = 9;
  * @return {string}
  */
-proto.zwan.Order.prototype.getNotes = function() {
+proto.zwan.Order.prototype.getStatus = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
@@ -440,18 +452,36 @@ proto.zwan.Order.prototype.getNotes = function() {
  * @param {string} value
  * @return {!proto.zwan.Order} returns this
  */
-proto.zwan.Order.prototype.setNotes = function(value) {
+proto.zwan.Order.prototype.setStatus = function(value) {
   return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
 /**
- * optional google.protobuf.Timestamp created = 10;
+ * optional string notes = 10;
+ * @return {string}
+ */
+proto.zwan.Order.prototype.getNotes = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.zwan.Order} returns this
+ */
+proto.zwan.Order.prototype.setNotes = function(value) {
+  return jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp created = 11;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.zwan.Order.prototype.getCreated = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 10));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11));
 };
 
 
@@ -460,7 +490,7 @@ proto.zwan.Order.prototype.getCreated = function() {
  * @return {!proto.zwan.Order} returns this
 */
 proto.zwan.Order.prototype.setCreated = function(value) {
-  return jspb.Message.setWrapperField(this, 10, value);
+  return jspb.Message.setWrapperField(this, 11, value);
 };
 
 
@@ -478,7 +508,7 @@ proto.zwan.Order.prototype.clearCreated = function() {
  * @return {boolean}
  */
 proto.zwan.Order.prototype.hasCreated = function() {
-  return jspb.Message.getField(this, 10) != null;
+  return jspb.Message.getField(this, 11) != null;
 };
 
 
