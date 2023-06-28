@@ -1,7 +1,7 @@
 <template>
     <ion-header>
         <ion-toolbar>
-            <ion-title>服务下单</ion-title>
+            <ion-title>陪诊服务下单</ion-title>
         </ion-toolbar>
     </ion-header>
     <ion-content>

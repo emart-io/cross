@@ -2,6 +2,7 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
@@ -12,7 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = Function('return this')();
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.object.extend(proto, google_protobuf_empty_pb);
@@ -563,7 +570,8 @@ proto.zwan.Attendant.prototype.getAnnotationsMap = function(opt_noLazyCreate) {
  */
 proto.zwan.Attendant.prototype.clearAnnotationsMap = function() {
   this.getAnnotationsMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -1143,7 +1151,8 @@ proto.zwan.Address.prototype.getAnnotationsMap = function(opt_noLazyCreate) {
  */
 proto.zwan.Address.prototype.clearAnnotationsMap = function() {
   this.getAnnotationsMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
@@ -1681,7 +1690,8 @@ proto.zwan.Memo.prototype.getAnnotationsMap = function(opt_noLazyCreate) {
  */
 proto.zwan.Memo.prototype.clearAnnotationsMap = function() {
   this.getAnnotationsMap().clear();
-  return this;};
+  return this;
+};
 
 
 /**
