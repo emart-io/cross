@@ -53,10 +53,12 @@ generate-descriptor:
 	--descriptor_set_out=service/descriptor.pb service/*.proto
 	@echo Generate-descriptor completely.
 
-build:generate
+#build:generate
+build:
 	CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags='$(LD_FLAGS)' -o bundles/$(SERVICE) internal/cmd/*.go
 
-image:build
+#image:build
+image:
 	docker build --platform=linux/arm64 -t $(IMG_HUB)/$(SERVICE):$(TAG) .
 
 push:image
