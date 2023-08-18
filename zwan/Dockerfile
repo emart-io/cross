@@ -1,5 +1,4 @@
 FROM golang:1.20 as builder
-
 WORKDIR /go/src
 COPY . .
 RUN make build

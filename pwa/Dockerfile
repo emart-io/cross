@@ -1,10 +1,12 @@
-# first stage builds vue
+# build vue
 FROM node:16 as builder
 WORKDIR /app
+COPY package.json .
+RUN npm install
 COPY . .
-RUN npm install && npm run build
+RUN npm run build
 
-# second stage copies the static dist files 
+# copy the static dist files 
 FROM nginx:alpine-slim
 ADD ./nginx.conf /etc/nginx/conf.d/default.conf
 ADD ./cert/fullchain.cer ./cert/iyou.city.key /etc/
