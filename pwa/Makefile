@@ -15,7 +15,7 @@ image:
 	docker build --platform=linux/arm64 -t $(IMG_HUB)/$(SERVICE):$(TAG) .
 
 #push:build
-push:
+push:image
 	docker push $(IMG_HUB)/$(SERVICE):$(TAG)
 
 resource:
