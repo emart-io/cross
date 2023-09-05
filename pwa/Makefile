@@ -2,13 +2,13 @@ SERVICE=pwa
 IMG_HUB?=docker.io/jmzwcn
 TAG?=${shell date "+%Y%m%d-%H%M"}
 
-#clean:
-#	rm -rf dist
+clean:
+	rm -rf dist
 #	-cp resources/sign/* platforms/android
 
-#build:clean
+build:clean
 #	ionic build --prod
-#	./node_modules/.bin/vue-cli-service build --no-module
+	./node_modules/.bin/vue-cli-service build
 #	docker build -t $(IMG_HUB)/$(SERVICE):$(TAG) .
 
 image:
