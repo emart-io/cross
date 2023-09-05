@@ -3,3 +3,4 @@ Firefox >=63
 Edge >=79
 Safari >=13
 iOS >=13
+not IE 11
