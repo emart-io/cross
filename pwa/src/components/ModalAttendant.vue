@@ -12,8 +12,8 @@
     </ion-header>
     <ion-content class="ion-padding">
         <ion-item>
-            <ion-label position="stacked">Your name</ion-label>
-            <ion-input v-model="attendant.name" placeholder="Your name"></ion-input>
+            <ion-label position="stacked">姓名</ion-label>
+            <ion-input v-model="attendant.name" placeholder="请输入您的姓名"></ion-input>
         </ion-item>
     </ion-content>
 </template>
