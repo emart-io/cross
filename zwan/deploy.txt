@@ -13,5 +13,5 @@ curl -X POST 'http://iyou.city:8080/zbay.Commodities/List' -H 'Content-Type: app
 # 支持ipv6:
 docker network create best
 docker run --name mysql -d --network best --network-alias mysql_emart --restart=always --mount type=bind,source=/root/.emart_mysqldata,destination=/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=emart ubuntu/mysql
-docker run --name zwan -d --network best --network-alias zwan --restart=always jmzwcn/zwan:20230225-1803
-docker run --name pwa -d --network best --restart=always -p 8443:443 jmzwcn/pwa:20230905-2248
+docker run --name zwan -d --network best --network-alias zwan --restart=always jmzwcn/zwan:20230816-2223
+docker run --name pwa -d --network best --restart=always -p 8443:443 jmzwcn/pwa:20230906-2205
