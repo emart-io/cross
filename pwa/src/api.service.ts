@@ -3,7 +3,8 @@ import { OrdersPromiseClient } from './sdk/order_grpc_web_pb';
 
 export class ApiService {
     // opts = { 'streamInterceptors': [new StreamInterceptor()] };;
-    apiUrl = 'https://' + window.location.host
+    // apiUrl = 'https://' + window.location.host
+    apiUrl = 'https://www.iyou.city:8443'
 
     attendantClient = new AttendantsPromiseClient(this.apiUrl)
     // commodityClient = new CommoditiesPromiseClient(environment.apiUrl, null, this.opts);
@@ -17,7 +18,7 @@ export class ApiService {
     // memoClient = new MemosPromiseClient(environment.apiUrl);
 
     //constructor() { }
-    hospitals:any[]=[];
+    hospitals: any[] = [];
 }
 
 export const apiService = new ApiService();
