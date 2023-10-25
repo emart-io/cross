@@ -48,14 +48,14 @@ message Attendant {
 }
 
 message Certification {
-  string fullName = 1;
-  string idCardNo = 2;
+  string fullname = 1;
+  string id_card_no = 2;
   repeated string images = 3;
 }
 
 message Address {
   string id = 1;
-  string AttendantId = 2;
+  string attendant_id = 2;
   string contact = 3;
   string telephone = 4;
   string location = 5;
@@ -72,7 +72,7 @@ message Shop {
 
 message Memo {
   string id = 1;
-  string AttendantId = 2;
+  string attendant_id = 2;
   string title = 3;
   string content = 4;
   string location = 8;
