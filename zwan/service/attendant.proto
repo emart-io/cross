@@ -49,7 +49,7 @@ message Attendant {
 
 message Certification {
   string fullname = 1;
-  string id_card_no = 2;
+  string id_card_num = 2;
   repeated string images = 3;
 }
 
