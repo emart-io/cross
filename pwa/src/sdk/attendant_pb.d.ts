@@ -68,8 +68,8 @@ export class Certification extends jspb.Message {
   getFullname(): string;
   setFullname(value: string): Certification;
 
-  getIdcardno(): string;
-  setIdcardno(value: string): Certification;
+  getIdCardNum(): string;
+  setIdCardNum(value: string): Certification;
 
   getImagesList(): Array<string>;
   setImagesList(value: Array<string>): Certification;
@@ -87,7 +87,7 @@ export class Certification extends jspb.Message {
 export namespace Certification {
   export type AsObject = {
     fullname: string,
-    idcardno: string,
+    idCardNum: string,
     imagesList: Array<string>,
   }
 }
@@ -96,8 +96,8 @@ export class Address extends jspb.Message {
   getId(): string;
   setId(value: string): Address;
 
-  getAttendantid(): string;
-  setAttendantid(value: string): Address;
+  getAttendantId(): string;
+  setAttendantId(value: string): Address;
 
   getContact(): string;
   setContact(value: string): Address;
@@ -130,7 +130,7 @@ export class Address extends jspb.Message {
 export namespace Address {
   export type AsObject = {
     id: string,
-    attendantid: string,
+    attendantId: string,
     contact: string,
     telephone: string,
     location: string,
@@ -170,8 +170,8 @@ export class Memo extends jspb.Message {
   getId(): string;
   setId(value: string): Memo;
 
-  getAttendantid(): string;
-  setAttendantid(value: string): Memo;
+  getAttendantId(): string;
+  setAttendantId(value: string): Memo;
 
   getTitle(): string;
   setTitle(value: string): Memo;
@@ -206,7 +206,7 @@ export class Memo extends jspb.Message {
 export namespace Memo {
   export type AsObject = {
     id: string,
-    attendantid: string,
+    attendantId: string,
     title: string,
     content: string,
     location: string,

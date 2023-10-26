@@ -651,7 +651,7 @@ proto.zwan.Certification.prototype.toObject = function(opt_includeInstance) {
 proto.zwan.Certification.toObject = function(includeInstance, msg) {
   var f, obj = {
     fullname: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    idcardno: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    idCardNum: jspb.Message.getFieldWithDefault(msg, 2, ""),
     imagesList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f
   };
 
@@ -695,7 +695,7 @@ proto.zwan.Certification.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setIdcardno(value);
+      msg.setIdCardNum(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -737,7 +737,7 @@ proto.zwan.Certification.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getIdcardno();
+  f = message.getIdCardNum();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -755,7 +755,7 @@ proto.zwan.Certification.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string fullName = 1;
+ * optional string fullname = 1;
  * @return {string}
  */
 proto.zwan.Certification.prototype.getFullname = function() {
@@ -773,10 +773,10 @@ proto.zwan.Certification.prototype.setFullname = function(value) {
 
 
 /**
- * optional string idCardNo = 2;
+ * optional string id_card_num = 2;
  * @return {string}
  */
-proto.zwan.Certification.prototype.getIdcardno = function() {
+proto.zwan.Certification.prototype.getIdCardNum = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -785,7 +785,7 @@ proto.zwan.Certification.prototype.getIdcardno = function() {
  * @param {string} value
  * @return {!proto.zwan.Certification} returns this
  */
-proto.zwan.Certification.prototype.setIdcardno = function(value) {
+proto.zwan.Certification.prototype.setIdCardNum = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -860,7 +860,7 @@ proto.zwan.Address.prototype.toObject = function(opt_includeInstance) {
 proto.zwan.Address.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    attendantid: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    attendantId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     contact: jspb.Message.getFieldWithDefault(msg, 3, ""),
     telephone: jspb.Message.getFieldWithDefault(msg, 4, ""),
     location: jspb.Message.getFieldWithDefault(msg, 5, ""),
@@ -909,7 +909,7 @@ proto.zwan.Address.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAttendantid(value);
+      msg.setAttendantId(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -974,7 +974,7 @@ proto.zwan.Address.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getAttendantid();
+  f = message.getAttendantId();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -1043,10 +1043,10 @@ proto.zwan.Address.prototype.setId = function(value) {
 
 
 /**
- * optional string AttendantId = 2;
+ * optional string attendant_id = 2;
  * @return {string}
  */
-proto.zwan.Address.prototype.getAttendantid = function() {
+proto.zwan.Address.prototype.getAttendantId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -1055,7 +1055,7 @@ proto.zwan.Address.prototype.getAttendantid = function() {
  * @param {string} value
  * @return {!proto.zwan.Address} returns this
  */
-proto.zwan.Address.prototype.setAttendantid = function(value) {
+proto.zwan.Address.prototype.setAttendantId = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -1415,7 +1415,7 @@ proto.zwan.Memo.prototype.toObject = function(opt_includeInstance) {
 proto.zwan.Memo.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    attendantid: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    attendantId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     title: jspb.Message.getFieldWithDefault(msg, 3, ""),
     content: jspb.Message.getFieldWithDefault(msg, 4, ""),
     location: jspb.Message.getFieldWithDefault(msg, 8, ""),
@@ -1464,7 +1464,7 @@ proto.zwan.Memo.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAttendantid(value);
+      msg.setAttendantId(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -1530,7 +1530,7 @@ proto.zwan.Memo.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getAttendantid();
+  f = message.getAttendantId();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -1600,10 +1600,10 @@ proto.zwan.Memo.prototype.setId = function(value) {
 
 
 /**
- * optional string AttendantId = 2;
+ * optional string attendant_id = 2;
  * @return {string}
  */
-proto.zwan.Memo.prototype.getAttendantid = function() {
+proto.zwan.Memo.prototype.getAttendantId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -1612,7 +1612,7 @@ proto.zwan.Memo.prototype.getAttendantid = function() {
  * @param {string} value
  * @return {!proto.zwan.Memo} returns this
  */
-proto.zwan.Memo.prototype.setAttendantid = function(value) {
+proto.zwan.Memo.prototype.setAttendantId = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
