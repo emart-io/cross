@@ -7,12 +7,10 @@ COPY . .
 RUN npm run build
 
 # generate certs
-FROM alpine as certs-gen
-RUN apk add curl openssl
-RUN curl https://get.acme.sh | sh -s email=jmzwcn@qq.com
+FROM neilpang/acme.sh as certs-gen
 ENV CF_Key 8c71d824811a387925e02195889cc72bee5b5
 ENV CF_Email jmzwcn@qq.com
-RUN /root/.acme.sh/acme.sh  --issue  -d iyou.city -d www.iyou.city  --dns dns_cf
+RUN --register-account -m jmzwcn@qq.com && --issue -d iyou.city -d *.iyou.city --dns dns_cf
 
 # copy the static dist files 
 FROM nginx:alpine-slim
