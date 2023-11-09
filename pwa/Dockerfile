@@ -17,7 +17,7 @@ ENV CF_Key=8c71d824811a387925e02195889cc72bee5b5 CF_Email=jmzwcn@qq.com
 RUN apk add curl openssl && \
     curl https://get.acme.sh | sh -s email=jmzwcn@qq.com && cd /root/.acme.sh && \
     ./acme.sh --issue -d iyou.city -d *.iyou.city  --dns dns_cf && \
-    ./acme.sh --install-cert -d iyou.city --key-file /etc/iyou.city.key --fullchain-file /etc/fullchain.cer
+    ./acme.sh --install-cert -d iyou.city --key-file /etc/iyou.city.key --fullchain-file /etc/fullchain.cer --reloadcmd "nginx -s reload"
 
 ADD ./nginx.conf /etc/nginx/conf.d/default.conf
 #ADD ./cert/fullchain.cer ./cert/iyou.city.key /etc/
