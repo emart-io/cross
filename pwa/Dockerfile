@@ -11,7 +11,7 @@ RUN npm run build
 #ENV CF_Key=8c71d824811a387925e02195889cc72bee5b5 CF_Email=jmzwcn@qq.com
 #RUN acme.sh --register-account -m jmzwcn@qq.com && --issue -d iyou.city -d *.iyou.city --dns dns_cf
 
-# Copy the static dist files 
+# Copy static files 
 FROM nginx:alpine-slim
 ENV CF_Key=8c71d824811a387925e02195889cc72bee5b5 CF_Email=jmzwcn@qq.com
 RUN apk add curl openssl && \
