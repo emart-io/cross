@@ -24,11 +24,10 @@
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
-</ion-page>
+  </ion-page>
 </template>
 
 <script setup lang="ts">
-import { defineComponent } from 'vue';
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
 import { ellipse, homeOutline, person, cubeOutline } from 'ionicons/icons';
 </script>

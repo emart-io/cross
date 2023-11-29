@@ -61,7 +61,7 @@
     </ion-content>
 </template>
   
-<script lang="ts">
+<script setup lang="ts">
 import {
     IonContent,
     IonHeader,
@@ -83,39 +83,24 @@ import { defineComponent } from 'vue';
 import { apiService } from '../api.service';
 import { Order } from '../sdk/order_pb';
 
-export default defineComponent({
-    name: 'ModalOrder',
-    components: {
-        IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonItem, IonLabel, IonInput, IonTextarea,
-        IonSelect, IonSelectOption,
-        IonDatetime, IonDatetimeButton, IonModal,
-        IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle
-    },
-    data() {
-        var lines = 2;
-        var order = new Order().toObject();
-        var hospitals = apiService.hospitals;
-        return {
-            order, lines, hospitals,
-        }
-    },
-    methods: {
-        cancel() {
-            return modalController.dismiss(null, 'cancel');
-        },
-        confirm() {
-            console.log(this.order);
-            if (this.order.hospital == '' || this.order.department == '') {
-                alert('请选择医院与科室')
-                return
-            }
-            var att = new Order().setHospital(this.order.hospital).setDepartment(this.order.department);
-            att.setNotes(this.order.notes);
-            apiService.orderClient.add(att).catch(err => {
-                console.log(JSON.stringify(err));
-            });
-            return modalController.dismiss(this.order.hospital, 'confirm');
-        },
-    },
-});
+var lines = 2;
+var order = new Order().toObject();
+var hospitals = apiService.hospitals;
+
+function cancel() {
+    return modalController.dismiss(null, 'cancel');
+}
+function confirm() {
+    console.log(order);
+    if (order.hospital == '' || order.department == '') {
+        alert('请选择医院与科室')
+        return
+    }
+    var att = new Order().setHospital(order.hospital).setDepartment(order.department);
+    att.setNotes(order.notes);
+    apiService.orderClient.add(att).catch(err => {
+        console.log(JSON.stringify(err));
+    });
+    return modalController.dismiss(order.hospital, 'confirm');
+}
 </script>

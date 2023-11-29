@@ -18,7 +18,7 @@
     </ion-content>
 </template>
   
-<script lang="ts">
+<script setup lang="ts">
 import {
     IonContent,
     IonHeader,
@@ -31,35 +31,23 @@ import {
     IonInput,
     modalController,
 } from '@ionic/vue';
-import { defineComponent } from 'vue';
 import { apiService } from '../api.service';
 import { Attendant } from '../sdk/attendant_pb';
 
-export default defineComponent({
-    name: 'ModalAttendant',
-    components: { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonButton, IonItem, IonLabel, IonInput },
-    data() {
-        var attendant = new Attendant().toObject();
-        //attendant.name = 'test';
-        return {
-            attendant
-        }
-    },
-    methods: {
-        cancel() {
-            return modalController.dismiss(null, 'cancel');
-        },
-        confirm() {
-            if (this.attendant.name == '') {
-                alert('请输入姓名')
-                return
-            }
-            var att = new Attendant().setName(this.attendant.name);
-            apiService.attendantClient.add(att).catch(err => {
-                console.log(JSON.stringify(err));
-            });
-            return modalController.dismiss(this.attendant.name, 'confirm');
-        },
-    },
-});
+var attendant = new Attendant().toObject();
+
+function cancel() {
+    return modalController.dismiss(null, 'cancel');
+}
+function confirm() {
+    if (attendant.name == '') {
+        alert('请输入姓名')
+        return
+    }
+    var att = new Attendant().setName(attendant.name);
+    apiService.attendantClient.add(att).catch(err => {
+        console.log(JSON.stringify(err));
+    });
+    return modalController.dismiss(attendant.name, 'confirm');
+}
 </script>
