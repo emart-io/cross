@@ -70,10 +70,9 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, IonList, IonLabel, IonContent, IonCard, /*IonCardContent,*/ IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow, IonItem, IonThumbnail,modalController } from '@ionic/vue';
-//import ExploreContainer from '@/components/ExploreContainer.vue';
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { IonPage, IonHeader, IonToolbar, IonButton, IonIcon, IonList, IonLabel, IonContent, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow, IonItem, IonThumbnail, modalController } from '@ionic/vue';
 import { location } from 'ionicons/icons';
 import AMapLoader from '@amap/amap-jsapi-loader';
 import { Autoplay, Pagination } from 'swiper';
@@ -85,89 +84,75 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 
-export default defineComponent({
-  name: 'Tab1Page',
-  ionViewWillEnter() {
-    console.log('Home page will enter');
-    this.getLocation();
-  },
-  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonButton, IonIcon, IonList, IonLabel, IonContent, IonPage, Swiper, SwiperSlide, IonCard, /*IonCardContent,*/ IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow, IonItem, IonThumbnail },
-  data() {
-    return {
-      position: "湖北荆门",
-      autoplay: { delay: 3000 },
-      hospitals: [],
-    }
-  },
-  methods: {
-    getLocation() {
-      AMapLoader.load({
-        key: '60d396703bef1a6a93d2eca45a70e764',
-        version: '1.4.15',
-        plugins: ['AMap.Geolocation', 'AMap.PlaceSearch'],
-      }).then(AMap => {
-        const geolocation = new AMap.Geolocation({
-          enableHighAccuracy: true,
-          radius: 10000,
-        })
+const position = ref("湖北荆门");
+const autoplay = { delay: 3000 };
+const hospitals = ref([]);
 
-        geolocation.getCurrentPosition((status: any, result: any) => {
-          if (status == 'complete') {
-            console.log("111", result)
-            if (result.addressComponent) {
-              this.position = result.addressComponent.province;
-            }
-          } else {
-            console.log("222", result);
-          }
-        })
+const onSwiper = (swiper: any) => {
+  console.log(swiper);
+};
+const onSlideChange = () => {
+  console.log('slide change');
+};
 
-        var placeSearch = new AMap.PlaceSearch({
-          pageSize: 100, // 单页显示结果条数
-          // city 指定搜索所在城市，支持传入格式有：城市名、citycode和adcode
-          city: '010',
-          panel: "container",
-        });
+const modules = [Autoplay, Pagination];
 
-        placeSearch.search('三甲医院', (status: any, result: any) => {
-          // 查询成功时，result即对应匹配的POI信息
-          console.log(JSON.stringify(result));
-          this.$data.hospitals = result.poiList.pois;
-          apiService.hospitals = this.$data.hospitals;
-        });
-      }).catch((e) => {
-        console.log(e)
-      })
-    },
-    async openModal() {
-      const modal = await modalController.create({
-        component: ModalOrder,
-      });
-      modal.present();
+onMounted(() => {
+  console.log('Home page will enter');
+  getLocation();
+})
 
-      const { data, role } = await modal.onWillDismiss();
-      if (role === 'confirm') {
-        //this.message = `Hello, ${data}!`;
+function getLocation() {
+  AMapLoader.load({
+    key: '60d396703bef1a6a93d2eca45a70e764',
+    version: '1.4.15',
+    plugins: ['AMap.Geolocation', 'AMap.PlaceSearch'],
+  }).then(AMap => {
+    const geolocation = new AMap.Geolocation({
+      enableHighAccuracy: true,
+      radius: 10000,
+    })
+
+    geolocation.getCurrentPosition((status: any, result: any) => {
+      if (status == 'complete') {
+        console.log("111", result)
+        if (result.addressComponent) {
+          position.value = result.addressComponent.province;
+        }
+      } else {
+        console.log("222", result);
       }
-    },
-  },
-  setup() {
-    const onSwiper = (swiper: any) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log('slide change');
-    };
-    // const map = shallowRef(null);
-    return {
-      location,
-      onSwiper,
-      onSlideChange,
-      modules: [Autoplay, Pagination],
-      // map
-    }
+    })
+
+    var placeSearch = new AMap.PlaceSearch({
+      pageSize: 100, // 单页显示结果条数
+      // city 指定搜索所在城市，支持传入格式有：城市名、citycode和adcode
+      city: '010',
+      panel: "container",
+    });
+
+    placeSearch.search('三甲医院', (status: any, result: any) => {
+      // 查询成功时，result即对应匹配的POI信息
+      console.log(JSON.stringify(result));
+      hospitals.value = result.poiList.pois;
+      apiService.hospitals = hospitals.value;
+    });
+  }).catch((e) => {
+    console.log(e)
+  })
+}
+
+async function openModal() {
+  const modal = await modalController.create({
+    component: ModalOrder,
+  });
+  modal.present();
+
+  const { data, role } = await modal.onWillDismiss();
+  if (role === 'confirm') {
+    //this.message = `Hello, ${data}!`;
   }
-});
+}
 </script>
 
 <style>

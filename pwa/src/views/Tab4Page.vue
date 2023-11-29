@@ -54,41 +54,27 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { IonPage, /*IonHeader, IonToolbar, IonTitle,*/ IonContent, modalController, /*IonButton,*/ IonItem, IonLabel, IonThumbnail, IonFab } from '@ionic/vue';
 import { caretForwardOutline } from 'ionicons/icons';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import ModalAttendant from '@/components/ModalAttendant.vue';
 import QrcodeVue from 'qrcode.vue'
 
-export default defineComponent({
-  name: 'Tab4Page',
-  components: { /*ExploreContainer,*/ /*IonHeader, IonToolbar, IonTitle,*/ IonContent, IonPage, /*IonButton,*/ IonItem, IonLabel, IonThumbnail, QrcodeVue, IonFab },
-  data() {
-    return {
-      message: '',
-    };
-  },
-  methods: {
-    async openModal() {
-      const modal = await modalController.create({
-        component: ModalAttendant,
-      });
-      modal.present();
+const message = ref();
 
-      const { data, role } = await modal.onWillDismiss();
-      if (role === 'confirm') {
-        this.message = `Hello, ${data}!`;
-      }
-    },
-  },
-  setup() {
-    return {
-      caretForwardOutline,
-    };
-  },
-});
+async function openModal() {
+  const modal = await modalController.create({
+    component: ModalAttendant,
+  });
+  modal.present();
+
+  const { data, role } = await modal.onWillDismiss();
+  if (role === 'confirm') {
+    message.value = `Hello, ${data}!`;
+  }
+}
 </script>
 <style>
 ion-thumbnail {

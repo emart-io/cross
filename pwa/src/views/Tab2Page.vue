@@ -54,48 +54,38 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonAvatar, IonItem, IonLabel, IonButton } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { Attendant } from '../sdk/attendant_pb';
 import { apiService } from '../api.service';
 
-export default defineComponent({
-  name: 'Tab2Page',
-  ionViewWillEnter() {
-    console.log('Home page will enter');
-    this.attendants = [];
-    let stream = apiService.attendantClient.list(new Attendant());
-    stream.on('data', response => {
-      //let endTime = new Date().getTime();
-      //this.orders.push(response);
-      this.attendants.push(response.toObject());
-      //console.log(response.toObject())
-      //console.log(endTime - startTime);
-    });
-    stream.on('error', err => {
-      console.log(err);
-      //utilsService.alert(JSON.stringify(err));
-    });
-  },
-  components: { /*ExploreContainer,*/ IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonSearchbar, IonAvatar, IonItem, IonLabel, IonButton },
-  data() {
-    var attendant = new Attendant().toObject();
-    //attendant.name = 'test';
-    var attendants: Attendant.AsObject[] = [];
-    return {
-      attendant,
-      attendants,
-    }
-  },
-  methods: {
-    add() {
-      // var att = new Attendant().setName(this.$data.attendant.name).setIcon("").setId("d");
-      // apiService.attendantClient.add(att).catch(err => {
-      //   console.log(JSON.stringify(err));
-      // });
-    },
-  },
-});
+var attendant = new Attendant().toObject();
+//attendant.name = 'test';
+const attendants = ref<Attendant.AsObject[]>([]);
+
+onMounted(() => {
+  console.log('Home page will enter');
+  // attendants = [];
+  let stream = apiService.attendantClient.list(new Attendant());
+  stream.on('data', response => {
+    //let endTime = new Date().getTime();
+    //this.orders.push(response);
+    attendants.value.push(response.toObject());
+    //console.log(response.toObject())
+    //console.log(endTime - startTime);
+  });
+  stream.on('error', err => {
+    console.log(err);
+    //utilsService.alert(JSON.stringify(err));
+  });
+})
+
+function add() {
+  // var att = new Attendant().setName(this.$data.attendant.name).setIcon("").setId("d");
+  // apiService.attendantClient.add(att).catch(err => {
+  //   console.log(JSON.stringify(err));
+  // });
+}
 </script>
