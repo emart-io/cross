@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonAvatar, IonItem, IonLabel, IonButton } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonAvatar, IonItem, IonLabel, IonButton, onIonViewWillEnter } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { Attendant } from '../sdk/attendant_pb';
 import { apiService } from '../api.service';
@@ -65,9 +65,9 @@ var attendant = new Attendant().toObject();
 //attendant.name = 'test';
 const attendants = ref<Attendant.AsObject[]>([]);
 
-onMounted(() => {
+onIonViewWillEnter(() => {
   console.log('Home page will enter');
-  // attendants = [];
+  attendants.value = [];
   let stream = apiService.attendantClient.list(new Attendant());
   stream.on('data', response => {
     //let endTime = new Date().getTime();

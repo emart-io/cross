@@ -61,7 +61,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { IonPage, IonAvatar, IonButton, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonSegment, IonSegmentButton, modalController } from '@ionic/vue';
+import { IonPage, IonAvatar, IonButton, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonSegment, IonSegmentButton, modalController, onIonViewWillEnter } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { Order } from '../sdk/order_pb';
 import { apiService } from '../api.service';
@@ -72,7 +72,7 @@ var order = new Order().toObject();
 //attendant.name = 'test';
 const orders = ref<Order.AsObject[]>([]);
 
-onMounted(() => {
+onIonViewWillEnter(() => {
   console.log('Home page will enter');
   orders.value = [];
   let stream = apiService.orderClient.list(new Order());
