@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { IonPage, IonAvatar, IonButton, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonSegment, IonSegmentButton, modalController, onIonViewWillEnter } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { Order } from '../sdk/order_pb';

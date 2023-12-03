@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonAvatar, IonItem, IonLabel, IonButton, onIonViewWillEnter } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
 import { Attendant } from '../sdk/attendant_pb';

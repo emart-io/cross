@@ -79,7 +79,6 @@ import {
     modalController,
     IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle
 } from '@ionic/vue';
-import { defineComponent } from 'vue';
 import { apiService } from '../api.service';
 import { Order } from '../sdk/order_pb';
 
