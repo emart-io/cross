@@ -53,6 +53,9 @@ generate-descriptor:
 	--descriptor_set_out=service/descriptor.pb service/*.proto
 	@echo Generate-descriptor completely.
 
+ui:
+	cd ../pwa && npm run build && cp -rf dist ../zwan/internal/cmd && cp -rf cert ../zwan/bundles
+
 #build:generate
 build:
 	CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags='$(LD_FLAGS)' -o bundles/$(SERVICE) internal/cmd/*.go

@@ -1,2 +1,4 @@
 bundles
+internal/cmd/dist
 **/*.db
+.DS_Store
