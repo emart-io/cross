@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/fs"
 	"net/http"
+	"os"
 	"strings"
 
 	impl "github.com/emart.io/cross/zwan/internal/impl/service"
@@ -38,14 +39,14 @@ func main() {
 		log.Fatalf("sub error: %s", err)
 		return
 	}
-	mux.Handle("/", http.FileServer(http.FS(dist)))
+	mux.Handle("/", fileServerWith404(http.FS(dist)))
 	log.Infoln("listen:" + port)
 	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", port), certFile, keyFile, http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
 		// if request.ProtoMajor != 2 {
 		// 	mux.ServeHTTP(writer, request)
 		// 	return
 		// }
-		// handle gRPC-web
+		// Handle gRPC-web
 		if request.Header.Get("Content-Type") == "application/grpc-web+proto" {
 			request.Header.Set("Content-Type", "application/grpc")
 		}
@@ -55,4 +56,18 @@ func main() {
 		}
 		mux.ServeHTTP(writer, request)
 	})))
+}
+
+// Handle 404 to "/index.html"
+func fileServerWith404(root http.FileSystem) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		f, err := root.Open(r.URL.Path)
+		if err != nil && os.IsNotExist(err) {
+			r.URL.Path = "/"
+		}
+		if err == nil {
+			f.Close()
+		}
+		http.FileServer(root).ServeHTTP(w, r)
+	})
 }

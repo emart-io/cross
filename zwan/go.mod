@@ -3,8 +3,8 @@ module github.com/emart.io/cross/zwan
 go 1.19
 
 require (
+	github.com/glebarez/go-sqlite v1.21.2
 	github.com/google/uuid v1.3.0
-	github.com/jmzwcn/db v0.0.0-20230225095758-bba2ef9d489e
 	github.com/sirupsen/logrus v1.9.0
 	google.golang.org/grpc v1.53.0
 	google.golang.org/protobuf v1.28.1
@@ -12,8 +12,6 @@ require (
 
 require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
-	github.com/glebarez/go-sqlite v1.21.2 // indirect
-	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
