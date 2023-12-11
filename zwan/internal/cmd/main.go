@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/NYTimes/gziphandler"
 	impl "github.com/emart.io/cross/zwan/internal/impl/service"
 	pb "github.com/emart.io/cross/zwan/service/go"
 	log "github.com/sirupsen/logrus"
@@ -39,7 +40,7 @@ func main() {
 		log.Fatalf("sub error: %s", err)
 		return
 	}
-	mux.Handle("/", fileServerWith404(http.FS(dist)))
+	mux.Handle("/", fileServerWithExt(http.FS(dist)))
 	log.Infoln("listen:" + port)
 	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", port), certFile, keyFile, http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
 		// if request.ProtoMajor != 2 {
@@ -58,9 +59,9 @@ func main() {
 	})))
 }
 
-// Handle 404 to "/index.html"
-func fileServerWith404(root http.FileSystem) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+// Handle 404 to "/index.html" and gzip compression
+func fileServerWithExt(root http.FileSystem) http.Handler {
+	return gziphandler.GzipHandler(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		f, err := root.Open(r.URL.Path)
 		if err != nil && os.IsNotExist(err) {
 			r.URL.Path = "/"
@@ -69,5 +70,5 @@ func fileServerWith404(root http.FileSystem) http.Handler {
 			f.Close()
 		}
 		http.FileServer(root).ServeHTTP(w, r)
-	})
+	}))
 }
