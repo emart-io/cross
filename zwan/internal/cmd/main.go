@@ -49,6 +49,7 @@ func main() {
 		}
 		if request.ProtoMajor == 2 && strings.Contains(request.Header.Get("Content-Type"), "application/grpc") {
 			grpcServer.ServeHTTP(writer, request)
+			return
 		}
 		mux.ServeHTTP(writer, request)
 	})))
