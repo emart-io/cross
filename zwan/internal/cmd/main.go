@@ -42,16 +42,16 @@ func main() {
 	}
 	mux.Handle("/", fileServerWithExt(http.FS(dist)))
 	log.Infoln("listen:" + port)
-	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", port), certFile, keyFile, http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", port), certFile, keyFile, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Handle gRPC-web
-		if request.Header.Get("Content-Type") == "application/grpc-web+proto" {
-			request.Header.Set("Content-Type", "application/grpc")
+		if r.Header.Get("Content-Type") == "application/grpc-web+proto" {
+			r.Header.Set("Content-Type", "application/grpc")
 		}
-		if request.ProtoMajor == 2 && strings.Contains(request.Header.Get("Content-Type"), "application/grpc") {
-			grpcServer.ServeHTTP(writer, request)
+		if r.ProtoMajor == 2 && strings.HasPrefix(r.Header.Get("Content-Type"), "application/grpc") {
+			grpcServer.ServeHTTP(w, r)
 			return
 		}
-		mux.ServeHTTP(writer, request)
+		mux.ServeHTTP(w, r)
 	})))
 }
 
