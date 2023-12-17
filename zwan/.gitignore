@@ -1,4 +1,6 @@
 bundles
 internal/cmd/dist
-**/*.db
+*.db
 .DS_Store
+*.cer
+*.key

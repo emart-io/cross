@@ -43,6 +43,14 @@ func main() {
 	mux.Handle("/", fileServerWithExt(http.FS(dist)))
 	log.Infoln("listen:" + port)
 	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", port), certFile, keyFile, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// if r.Method == "OPTIONS" {
+		// 	w.Header().Set("Access-Control-Allow-Origin", "*")
+		// 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+		// 	w.Header().Set("Access-Control-Allow-Headers", "content-type,x-user-agent,x-grpc-web")
+		// 	w.WriteHeader(204)
+		// 	return
+		// }
+
 		// Handle gRPC-web
 		if r.Header.Get("Content-Type") == "application/grpc-web+proto" {
 			r.Header.Set("Content-Type", "application/grpc")
