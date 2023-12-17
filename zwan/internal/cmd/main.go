@@ -50,9 +50,9 @@ func main() {
 		}
 		if r.ProtoMajor == 2 && strings.HasPrefix(r.Header.Get("Content-Type"), "application/grpc") {
 			grpcServer.ServeHTTP(w, r)
-			return
+		} else {
+			mux.ServeHTTP(w, r)
 		}
-		mux.ServeHTTP(w, r)
 	})))
 }
 
