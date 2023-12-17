@@ -44,11 +44,11 @@ func main() {
 	log.Infoln("listen:" + port)
 	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", port), certFile, keyFile, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		handleCORS(w, r)
-		// Handle gRPC-web
-		if r.Header.Get("Content-Type") == "application/grpc-web+proto" {
-			r.Header.Set("Content-Type", "application/grpc")
-		}
-		if r.ProtoMajor == 2 && strings.HasPrefix(r.Header.Get("Content-Type"), "application/grpc") {
+		if /*r.ProtoMajor == 2 && */ strings.Contains(r.Header.Get("Content-Type"), "application/grpc") {
+			// Handle gRPC-web
+			if r.Header.Get("Content-Type") == "application/grpc-web+proto" {
+				r.Header.Set("Content-Type", "application/grpc")
+			}
 			grpcServer.ServeHTTP(w, r)
 		} else {
 			mux.ServeHTTP(w, r)
