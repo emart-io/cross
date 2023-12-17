@@ -43,14 +43,7 @@ func main() {
 	mux.Handle("/", fileServerWithExt(http.FS(dist)))
 	log.Infoln("listen:" + port)
 	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", port), certFile, keyFile, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// if r.Method == "OPTIONS" {
-		// 	w.Header().Set("Access-Control-Allow-Origin", "*")
-		// 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
-		// 	w.Header().Set("Access-Control-Allow-Headers", "content-type,x-user-agent,x-grpc-web")
-		// 	w.WriteHeader(204)
-		// 	return
-		// }
-
+		handleCORS(w, r)
 		// Handle gRPC-web
 		if r.Header.Get("Content-Type") == "application/grpc-web+proto" {
 			r.Header.Set("Content-Type", "application/grpc")
@@ -75,4 +68,17 @@ func fileServerWithExt(root http.FileSystem) http.Handler {
 		}
 		http.FileServer(root).ServeHTTP(w, r)
 	}))
+}
+
+func handleCORS(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "OPTIONS" {
+		w.Header().Set("Access-Control-Allow-Origin", "https://iyou.city")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+		w.Header().Set("Access-Control-Allow-Headers", "content-type,x-user-agent,x-grpc-web")
+		w.WriteHeader(204)
+		return
+	}
+	w.Header().Set("Access-Control-Allow-Origin", "https://iyou.city")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+	w.Header().Set("Access-Control-Allow-Headers", "content-type,x-user-agent,x-grpc-web")
 }
