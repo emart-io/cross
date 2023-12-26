@@ -78,7 +78,9 @@ func handleCORS(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(204)
 		return
 	}
-	w.Header().Set("Access-Control-Allow-Origin", "https://iyou.city")
-	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
-	w.Header().Set("Access-Control-Allow-Headers", "content-type,x-user-agent,x-grpc-web")
+	if strings.HasPrefix(r.Host, "iyou.city") {
+		w.Header().Set("Access-Control-Allow-Origin", "https://iyou.city")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+		w.Header().Set("Access-Control-Allow-Headers", "content-type,x-user-agent,x-grpc-web")
+	}
 }
