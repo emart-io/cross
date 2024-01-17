@@ -6,11 +6,11 @@ import (
 	"io/fs"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/NYTimes/gziphandler"
 	impl "github.com/emart.io/cross/zwan/internal/impl/service"
 	pb "github.com/emart.io/cross/zwan/service/go"
+	"github.com/improbable-eng/grpc-web/go/grpcweb"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 )
@@ -42,17 +42,16 @@ func main() {
 	}
 	mux.Handle("/", fileServerWithExt(http.FS(dist)))
 	log.Infoln("listen:" + port)
+
+	wrappedGrpc := grpcweb.WrapServer(grpcServer)
 	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", port), certFile, keyFile, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		handleCORS(w, r)
-		if /*r.ProtoMajor == 2 && */ strings.Contains(r.Header.Get("Content-Type"), "application/grpc") {
-			// Handle gRPC-web
-			if r.Header.Get("Content-Type") == "application/grpc-web+proto" {
-				r.Header.Set("Content-Type", "application/grpc")
-			}
-			grpcServer.ServeHTTP(w, r)
-		} else {
-			mux.ServeHTTP(w, r)
+		if wrappedGrpc.IsGrpcWebRequest(r) {
+			wrappedGrpc.ServeHTTP(w, r)
+			return
 		}
+
+		mux.ServeHTTP(w, r)
 	})))
 }
 

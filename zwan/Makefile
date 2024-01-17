@@ -44,7 +44,7 @@ generate-go:
 generate-js:
 	@$(PROTOC) -I./service service/*.proto \
 	--js_out=import_style=commonjs:service/js \
-	--grpc-web_out=import_style=commonjs+dts,mode=grpcweb:service/js
+	--grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:service/js
 	cp -rf service/js/* ../pwa/src/sdk
 	@echo Generate-js completely.
 
