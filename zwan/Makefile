@@ -53,7 +53,10 @@ generate-descriptor:
 	@echo Generate-descriptor completely.
 
 ui:
-	cd ../pwa && npm run build && cp -rf dist ../zwan/internal/cmd && cp -rf cert ../zwan/bundles
+	cd ../pwa && npm run build
+	rm -rf internal/cmd/dist
+	cp -rf ../pwa/dist internal/cmd
+	cp -rf ../pwa/cert ../zwan/bundles
 
 #build:generate
 build:
