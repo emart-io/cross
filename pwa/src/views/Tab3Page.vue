@@ -63,7 +63,7 @@
 import { ref } from 'vue';
 import { IonPage, IonAvatar, IonButton, IonItem, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonSegment, IonSegmentButton, modalController, onIonViewWillEnter } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
-import { Order } from '../sdk/order_pb';
+import { Order } from '../../../zwan/service/js//order_pb';
 import { apiService } from '../api.service';
 import ModalOrder from '@/components/ModalOrder.vue';
 

@@ -80,7 +80,7 @@ import {
     IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle
 } from '@ionic/vue';
 import { apiService } from '../api.service';
-import { Order } from '../sdk/order_pb';
+import { Order } from '../../../zwan/service/js//order_pb';
 
 var lines = 2;
 var order = new Order().toObject();

@@ -58,7 +58,7 @@
 import { ref } from 'vue';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonAvatar, IonItem, IonLabel, IonButton, onIonViewWillEnter } from '@ionic/vue';
 //import ExploreContainer from '@/components/ExploreContainer.vue';
-import { Attendant } from '../sdk/attendant_pb';
+import { Attendant } from '../../../zwan/service/js//attendant_pb';
 import { apiService } from '../api.service';
 
 var attendant = new Attendant().toObject();

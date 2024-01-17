@@ -32,7 +32,7 @@ import {
     modalController,
 } from '@ionic/vue';
 import { apiService } from '../api.service';
-import { Attendant } from '../sdk/attendant_pb';
+import { Attendant } from '../../../zwan/service/js/attendant_pb';
 
 var attendant = new Attendant().toObject();
 

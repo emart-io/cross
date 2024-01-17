@@ -1,5 +1,5 @@
-import { AttendantsPromiseClient } from './sdk/attendant_grpc_web_pb';
-import { OrdersPromiseClient } from './sdk/order_grpc_web_pb';
+import { AttendantsPromiseClient } from '../../zwan/service/js/attendant_grpc_web_pb';
+import { OrdersPromiseClient } from '../../zwan/service/js/order_grpc_web_pb';
 
 export class ApiService {
     // opts = { 'streamInterceptors': [new StreamInterceptor()] };;
