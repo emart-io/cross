@@ -37,7 +37,7 @@ proto.zwan = require('./order_pb.js');
 proto.zwan.OrdersClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options.format = 'binary';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -63,7 +63,7 @@ proto.zwan.OrdersClient =
 proto.zwan.OrdersPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options.format = 'binary';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client

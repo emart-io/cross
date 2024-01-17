@@ -37,7 +37,7 @@ proto.zwan = require('./attendant_pb.js');
 proto.zwan.AttendantsClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options.format = 'binary';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -63,7 +63,7 @@ proto.zwan.AttendantsClient =
 proto.zwan.AttendantsPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options.format = 'binary';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -511,7 +511,7 @@ proto.zwan.AttendantsPromiseClient.prototype.certificate =
 proto.zwan.AddressesClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options.format = 'binary';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -537,7 +537,7 @@ proto.zwan.AddressesClient =
 proto.zwan.AddressesPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options.format = 'binary';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -863,7 +863,7 @@ proto.zwan.AddressesPromiseClient.prototype.list =
 proto.zwan.MemosClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options.format = 'binary';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -889,7 +889,7 @@ proto.zwan.MemosClient =
 proto.zwan.MemosPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options.format = 'binary';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
